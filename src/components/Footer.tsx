@@ -1,5 +1,6 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { Facebook, Linkedin, Twitter, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   const { t, language } = useLanguage();
@@ -51,12 +52,12 @@ export function Footer() {
                 <ul className="space-y-3">
                   {footerLinks.map((link) => (
                     <li key={link.key}>
-                      <a 
-                        href={link.href}
+                      <Link 
+                        to={link.href}
                         className="text-gray-300 hover:text-white transition-colors duration-200"
                       >
                         {t(link.key)}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
