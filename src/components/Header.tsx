@@ -125,7 +125,7 @@ export function Header() {
               onClick={handleLogoClick}
             >
               <img
-                src="/img/EMDAD just.png"
+                src="/img/EMDAD.png"
                 alt="EMDAD Direct Logistics"
                 className="h-10 md:h-12 lg:h-14 w-auto object-contain transition-all duration-300 hover:scale-110 hover:drop-shadow-lg"
               />

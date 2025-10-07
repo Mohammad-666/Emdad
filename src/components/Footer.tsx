@@ -32,7 +32,7 @@ export function Footer() {
               <div className={`${language === 'ar' ? 'md:col-span-4 lg:col-span-2 order-1' : 'md:col-span-2'}`}>
                 <div className={`flex items-center justify-center md:justify-start mb-6`}>
                   <img 
-                    src="/img/EMDAD just.png" 
+                    src="/img/EMDAD.png" 
                     alt="Emdad Mubasher Direct Logistics" 
                     className="h-16 w-auto object-contain"
                   />
