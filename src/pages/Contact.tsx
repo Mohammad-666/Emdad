@@ -77,16 +77,17 @@ export default function Contact() {
                       </span>
                     </div>
                     <div className="flex flex-col items-center space-y-2">
-                      <Printer className="w-6 h-6 text-emdad-gold" />
-                      <div className="text-center">
-                        <p className="text-gray-700 text-sm" dir="ltr">
-                          {t("contact.info.fax1")}
-                        </p>
-                        <p className="text-gray-700 text-sm" dir="ltr">
-                          {t("contact.info.fax2")}
-                        </p>
-                      </div>
-                    </div>
+  <Printer className="w-6 h-6 text-emdad-gold" />
+  <div className="text-center">
+    <p className="text-gray-700 font-medium text-center body-small" dir="ltr">
+      {t("contact.info.fax1")}
+    </p>
+    <p className="text-gray-700 font-medium text-center body-small" dir="ltr">
+      {t("contact.info.fax2")}
+    </p>
+  </div>
+</div>
+
                   </div>
 
                   {/* Right Column */}
