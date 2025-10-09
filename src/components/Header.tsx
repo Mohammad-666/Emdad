@@ -9,7 +9,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
 
   const { language, toggleLanguage, t } = useLanguage();
   const navigate = useNavigate();
@@ -30,17 +30,20 @@ export function Header() {
       setLastScrollY(currentScrollY);
 
       // ScrollSpy functionality
-      const sections = document.querySelectorAll('section[id]');
-      let currentSection = '';
-      
+      const sections = document.querySelectorAll("section[id]");
+      let currentSection = "";
+
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (currentScrollY >= sectionTop - 200 && currentScrollY < sectionTop + sectionHeight - 200) {
-          currentSection = section.getAttribute('id') || '';
+        if (
+          currentScrollY >= sectionTop - 200 &&
+          currentScrollY < sectionTop + sectionHeight - 200
+        ) {
+          currentSection = section.getAttribute("id") || "";
         }
       });
-      
+
       setActiveSection(currentSection);
     };
 
@@ -83,8 +86,8 @@ export function Header() {
   };
 
   const isActiveLink = (href: string) => {
-    if (href === '') {
-      return location.pathname === '/';
+    if (href === "") {
+      return location.pathname === "/";
     }
     return location.pathname === `/${href}` || activeSection === href;
   };
@@ -130,11 +133,17 @@ export function Header() {
                 className="h-10 md:h-12 lg:h-14 w-auto object-contain transition-all duration-300 hover:scale-110 hover:drop-shadow-lg"
               />
               <span
-                className="text-lg md:text-xl lg:text-2xl font-bold text-emdad-gold italic tracking-wide hidden sm:inline bg-gradient-to-r from-emdad-gold to-yellow-400 bg-clip-text text-transparent"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                {language === "ar" ? "إمداد مباشر" : "Emdad Mubasher"}
-              </span>
+  className="text-lg md:text-xl lg:text-2xl font-bold text-emdad-gold tracking-wide hidden sm:inline bg-gradient-to-r from-emdad-gold to-yellow-400 bg-clip-text text-transparent"
+  style={{
+    fontFamily:
+      language === "ar"
+        ? "'Tajawal', 'Noto Sans Arabic', sans-serif"
+        : "'Poppins', sans-serif",
+  }}
+>
+  {language === "ar" ? "إمداد مباشر" : "Emdad Mubasher"}
+</span>
+
             </div>
 
             {/* Desktop Navigation */}
@@ -156,11 +165,14 @@ export function Header() {
               </button>
 
               {/* About Dropdown */}
-              <div className={`relative group ${language === "ar" ? "ml-6" : ""}`}>
+              <div
+                className={`relative group ${language === "ar" ? "ml-6" : ""}`}
+              >
                 <button
                   onClick={() => handleNavigation("about")}
                   className={`relative px-3 py-2 rounded-lg font-medium flex items-center gap-1 transition-all duration-300 transform hover:scale-105 ${
-                    isActiveLink("about") || aboutDropdownItems.some(item => isActiveLink(item.href))
+                    isActiveLink("about") ||
+                    aboutDropdownItems.some((item) => isActiveLink(item.href))
                       ? "text-emdad-gold bg-emdad-gold/10 shadow-lg"
                       : "text-white hover:text-emdad-gold hover:bg-white/5"
                   } after:content-[''] after:absolute after:w-0 after:h-[3px]
@@ -301,7 +313,6 @@ export function Header() {
           )}
         </div>
       </header>
-
     </>
   );
 }

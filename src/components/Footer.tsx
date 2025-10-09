@@ -70,7 +70,7 @@ export function Footer() {
                   <div className={`flex items-center space-x-3 ${language === 'ar' ? 'justify-center md:justify-end' : ''}`}>
                     <Mail className="text-emdad-gold" size={20} />
                     {/* Email ثابت LTR */}
-                    <span className="text-gray-300" dir="ltr">info@emdadmubasher.sy</span>
+                    <span className="text-gray-300" dir="ltr">info@emdad.sy</span>
                   </div>
                   <div className={`flex items-center space-x-3 ${language === 'ar' ? 'justify-center md:justify-end' : ''}`}>
                     <Phone className="text-emdad-gold" size={20} />

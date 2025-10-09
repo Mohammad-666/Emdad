@@ -133,7 +133,7 @@ Our strategic plan incorporates a sustainability perspective with the following 
       <section 
         className="relative h-96 flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`
+          backgroundImage: `url('/img/100.jpg')`
         }}
       >
         <div className="absolute inset-0 bg-emdad-navy opacity-80"></div>

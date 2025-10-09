@@ -50,7 +50,7 @@ export default function Safety() {
 
 نلتزم في إمداد مباشر بتطبيق وتجاوز المعايير المعترف بها محليًا ودوليًا فيما يتعلق بسلامة النقل البري، خاصة عند التعامل مع المواد القابلة للاشتعال والخطرة. كل عملية نقل تخضع لإجراءات دقيقة تشمل الفحص الفني للمركبات، والتأكد من جاهزية السائقين، وتنفيذ خطط طوارئ مسبقة.
 
-نستثمر باستمرار في تطوير منظومة السلامة لدينا، سواء عبر تحديث الأسطول بأحدث تقنيات المراقبة والوقاية، أو من خلال التدريب الدوري لأكثر من 200 موظف على استجابات الطوارئ وإدارة الحوادث المحتملة.
+نستثمر باستمرار في تطوير منظومة السلامة لدينا، سواء عبر تحديث الأسطول بأحدث تقنيات المراقبة والوقاية، أو من خلال التدريب الدوري للموظفين على استجابات الطوارئ وإدارة الحوادث المحتملة.
 
 جميع عملياتنا تتم وفقًا لتعليمات صارمة تصدر عن الجهات التنظيمية في سوريا والدول الإقليمية، إلى جانب التزامنا بالمعايير الدولية لنقل المواد الخطرة مثل إرشادات ADR الأوروبية.
 
@@ -60,7 +60,7 @@ export default function Safety() {
 
 At Emdad Mubasher, we believe in meeting and exceeding all recognized safety and performance standards, particularly in the handling and transport of flammable and hazardous materials. Every single shipment undergoes strict procedures, including technical inspections, driver preparedness checks, and pre-defined emergency response plans.
 
-We continue to invest heavily in our safety systems, equipping our fleet with the latest monitoring and prevention technologies, and training over 200 employees in emergency handling and incident prevention on a regular basis.
+We continue to invest heavily in our safety systems, equipping our fleet with the latest monitoring and prevention technologies, and training the employees in emergency handling and incident prevention on a regular basis.
 
 All our operations are conducted in compliance with the regulations set by national authorities and regional agencies, along with adherence to international best practices such as the European ADR framework for road transport of dangerous goods.
 
@@ -91,7 +91,7 @@ At Emdad Mubasher, safety is not optional—it is the foundation of our reliabil
             {language === 'ar' ? 'السلامة' : 'Safety'}
           </h1>
           <p className="body-paragraph text-white animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.2s' }}>
-            {language === 'ar' ? 'الأداء والسلامة هما أولويتنا' : 'Performance & Safety Are Our Priorities'}
+            {language === 'ar' ? 'نحن نجعل نقل المواد الخطره موثوق مثل المياه الجاريه ': 'We make the transportation of hazardous materials as reliable as running water'}
           </p>
         </div>
       </section>

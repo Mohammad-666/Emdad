@@ -19,7 +19,7 @@ export function QualityStandards() {
           {/* Image */}
           <div className="animate-fade-in-up order-2 lg:order-1">
             <img 
-              src="/img/2.jpg" 
+              src="/img/Tank-Trucks.jpg" 
               alt="Quality Work and Excellence"
               className="rounded-lg shadow-lg w-full h-96 object-cover"
             />
