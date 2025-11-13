@@ -1,20 +1,20 @@
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Card, CardContent } from '@/components/ui/card';
-import { useLanguage } from '@/hooks/useLanguage';
-import { Activity, Users, MapPin, Truck, Globe, CircleCheck as CheckCircle } from 'lucide-react';
-import { Breadcrumb } from '@/components/Breadcrumb';
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/hooks/useLanguage";
+import {
+  Activity,
+  Users,
+  MapPin,
+  Truck,
+  Globe,
+  CircleCheck as CheckCircle,
+} from "lucide-react";
+import { Breadcrumb } from "@/components/Breadcrumb";
+import { KeyAchievements } from "@/components/KeyAchievements";
 
 export default function Activities() {
   const { language } = useLanguage();
-
-
-
-  const keyAchievements = [
-    { titleEn: "Regional expansion to Lebanon, Jordan, Iraq, and Turkey", titleAr: "التوسع الإقليمي ليشمل لبنان، الأردن، العراق، وتركيا" },
-    { titleEn: "Strategic partnerships with over 50 petroleum companies and service providers", titleAr: "شراكات استراتيجية مع أكثر من 50 شركة نفطية ومزود خدمة" },
-    { titleEn: "Specialized transport services for hazardous petroleum cargo in compliance with top environmental and technical safety standards", titleAr: "تقديم خدمات نقل مخصصة للبضائع الخطرة وفقًا لأعلى معايير السلامة البيئية والتقنية" }
-  ];
 
   const arabicContent = `منذ تأسيس شركة إمداد مباشر، ونحن نكرّس جهودنا لتقديم حلول نقل بري متخصصة وآمنة لمختلف المنتجات النفطية والنفط الخام داخل سوريا وفي المنطقة الإقليمية المحيطة. بفضل التزامنا الصارم بالجودة والكفاءة، أصبحت إمداد مباشر من أبرز الشركات العاملة في مجال النقل البري النفطي.
 
@@ -41,27 +41,34 @@ At Emdad Mubasher, we understand that transporting petroleum products is a criti
       <Header />
 
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-96 flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/img/activities.jpeg')` }}
       >
         <div className="absolute inset-0 bg-emdad-navy opacity-80"></div>
-        
+
         {/* Breadcrumb */}
         <div className="absolute top-20 left-0 right-0 z-20">
           <Breadcrumb className="py-4" />
         </div>
-        
+
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
           <Activity className="w-16 h-16 text-emdad-gold mx-auto mb-6" />
-          <h1 className="heading-hero font-bold
+          <h1
+            className="heading-hero font-bold
             bg-gradient-to-r from-emdad-gold via-yellow-400 to-emdad-gold
             bg-clip-text text-transparent
-            mb-4 md:mb-6 leading-tight arabic-text">
-            {language === 'ar' ? 'الأنشطة' : 'Activities'}
+            mb-4 md:mb-6 leading-tight arabic-text"
+          >
+            {language === "ar" ? "الأنشطة" : "Activities"}
           </h1>
-          <p className="body-paragraph text-white animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.2s' }}>
-            {language === 'ar' ? 'التخصص هو مفتاح النجاح' : 'Specialization is the Key to Success'}
+          <p
+            className="body-paragraph text-white animate-fade-in-up leading-relaxed"
+            style={{ animationDelay: "0.2s" }}
+          >
+            {language === "ar"
+              ? "التخصص هو مفتاح النجاح"
+              : "Specialization is the Key to Success"}
           </p>
         </div>
       </section>
@@ -72,14 +79,25 @@ At Emdad Mubasher, we understand that transporting petroleum products is a criti
           <div className="max-w-4xl mx-auto">
             <div className="prose prose-lg max-w-none">
               <div className="text-gray-700 leading-relaxed space-y-6 text-justify">
-                {language === 'ar'
-                  ? arabicContent.split('\n\n').map((p, i) => (
-                      <p key={i} className="animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>{p}</p>
+                {language === "ar"
+                  ? arabicContent.split("\n\n").map((p, i) => (
+                      <p
+                        key={i}
+                        className="animate-fade-in-up"
+                        style={{ animationDelay: `${i * 0.1}s` }}
+                      >
+                        {p}
+                      </p>
                     ))
-                  : englishContent.split('\n\n').map((p, i) => (
-                      <p key={i} className="animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>{p}</p>
-                    ))
-                }
+                  : englishContent.split("\n\n").map((p, i) => (
+                      <p
+                        key={i}
+                        className="animate-fade-in-up"
+                        style={{ animationDelay: `${i * 0.1}s` }}
+                      >
+                        {p}
+                      </p>
+                    ))}
               </div>
             </div>
           </div>
@@ -87,30 +105,7 @@ At Emdad Mubasher, we understand that transporting petroleum products is a criti
       </section>
 
       {/* Key Achievements Section */}
-      <section className="py-20 bg-emdad-navy">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="heading-section font-bold text-emdad-gold mb-6">
-                {language === 'ar' ? 'من أبرز إنجازاتنا' : 'Key Achievements'}
-              </h2>
-              <div className="w-24 h-1 bg-emdad-gold mx-auto"></div>
-            </div>
-            <div className="space-y-6">
-              {keyAchievements.map((achievement, i) => (
-                <div key={i} className="flex items-start space-x-4 rtl:space-x-reverse animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
-                  <div className="flex-shrink-0 w-8 h-8 bg-emdad-gold rounded-full flex items-center justify-center mt-1">
-                    <CheckCircle className="w-5 h-5 text-white" />
-                  </div>
-                  <p className="text-white body-paragraph leading-relaxed">
-                    {language === 'ar' ? achievement.titleAr : achievement.titleEn}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* <KeyAchievements /> */}
 
       <Footer />
     </div>

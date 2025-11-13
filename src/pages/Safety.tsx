@@ -167,8 +167,8 @@ At Emdad Mubasher, safety is not optional—it is the foundation of our reliabil
                 </h2>
                 <p className="body-paragraph text-gray-700 leading-relaxed mb-8">
                   {language === 'ar'
-                    ? 'نستثمر في تدريب أكثر من 200 موظف على أحدث معايير السلامة'
-                    : 'We invest in training over 200 employees on the latest safety standards'}
+                    ? 'نستثمر في تدريب الموظفين  على أحدث معايير السلامة'
+                    : 'We invest in training the employees on the latest safety standards'}
                 </p>
                 <div className="space-y-4">
                   {trainingPrograms.map((program, i) => (

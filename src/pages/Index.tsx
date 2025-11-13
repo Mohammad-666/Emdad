@@ -1,12 +1,12 @@
 
 import { Header } from '@/components/Header';
-import { HeroSection } from '@/components/HeroSection';
-import { CardsSection } from '@/components/CardsSection';
-import { InteractiveSlider } from '@/components/InteractiveSlider';
-import { AboutSection } from '@/components/AboutSection';
-import { WhatWeRepresentSection } from '@/components/WhatWeRepresentSection';
-import { NumbersSection } from '@/components/NumbersSection';
-import { WhyJotecSection } from '@/components/WhyJotecSection';
+import { HeroSection } from '@/components/Home/HeroSection';
+import { CardsSection } from '@/components/Home/CardsSection';
+import { InteractiveSlider } from '@/components/Home/InteractiveSlider';
+import { AboutSection } from '@/components/Home/AboutSection';
+import { WhatWeRepresentSection } from '@/components/Home/WhatWeRepresentSection';
+import { NumbersSection } from '@/components/Home/NumbersSection';
+import { WhyJotecSection } from '@/components/Home/WhyJotecSection';
 import { Footer } from '@/components/Footer';
 
 const Index = () => {

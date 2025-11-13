@@ -38,11 +38,6 @@ export default function Services() {
 
   const capabilities = [
     {
-      icon: Gauge,
-      titleEn: "Transport capacity exceeding 1.5 million liters per month",
-      titleAr: "قدرة نقل تتجاوز 13 مليون لتر شهريًا"
-    },
-    {
       icon: Clock,
       titleEn: "Fast response time: under 12 hours for domestic shipments",
       titleAr: "زمن استجابة سريع: أقل من 12 ساعة للشحنات داخل سوريا"
@@ -127,7 +122,7 @@ export default function Services() {
         <div className="w-24 h-1 bg-emdad-gold mx-auto"></div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {capabilities.map((capability, index) => (
           <div
             key={index}

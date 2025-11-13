@@ -39,7 +39,7 @@ export default function CorporateGovernance() {
       <section
         className="relative h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('/img/2.jpg')`,
+          backgroundImage: `url('/img/CorporateGovernance.png')`,
         }}
       >
         <div className="absolute inset-0 bg-emdad-navy opacity-80"></div>
