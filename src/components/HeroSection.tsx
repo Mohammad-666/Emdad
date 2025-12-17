@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 import heroMain from "@/assets/hero-main.jpg";
 import heroEngineers from "@/assets/hero-engineers.jpg";
 import heroSafety from "@/assets/hero-safety.jpg";
@@ -60,6 +61,7 @@ const slides: Slide[] = [
 export const HeroSection = () => {
   const { t } = useLanguage();
   const langLink = useLangLink();
+  const navigate = useNavigate();
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -97,8 +99,8 @@ export const HeroSection = () => {
         window.location.href = `/#${slide.ctaTarget}`;
       }
     } else {
-      // استخدم langLink للصفحات
-      window.location.href = langLink(slide.ctaTarget);
+      // استخدم التنقل الداخلي لروابط الصفحات لتجنّب طلب كامل للسيرفر
+      navigate(langLink(slide.ctaTarget));
     }
   };
 
