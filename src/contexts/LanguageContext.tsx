@@ -142,7 +142,7 @@ const translations = {
       "We adhere to strict international HSE standards, ensuring all operations comply with global regulations and industry best practices.",
     "faq.q3": "Where are your services available?",
     "faq.a3":
-      "Our services are available across Jordan and the broader Middle East region.",
+      "Our services are available across Syria.",
     "faq.q4": "How can I request a quote?",
     "faq.a4":
       "You can request a quote by filling out our contact form, calling our office directly, or sending us an email.",
@@ -742,7 +742,7 @@ const translations = {
     "faq.q2": "ما هي معايير السلامة التي تتبعونها؟",
     "faq.a2": "نلتزم بمعايير صارمة للصحة والسلامة والبيئة الدولية.",
     "faq.q3": "أين تتوفر خدماتكم؟",
-    "faq.a3": "خدماتنا متاحة في جميع أنحاء الأردن ومنطقة الشرق الأوسط.",
+    "faq.a3": "خدماتنا متاحة في جميع أنحاء سوريا .",
     "faq.q4": "كيف يمكنني طلب عرض سعر؟",
     "faq.a4":
       "يمكنك طلب عرض سعر من خلال ملء نموذج الاتصال أو الاتصال بمكتبنا مباشرة.",

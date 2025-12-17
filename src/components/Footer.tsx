@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useLangLink } from "@/hooks/useLangLink";
 import logo from "@/assets/PETRA-Logo.png";
 import { AboutPanel } from "@/components/AboutPanel";
@@ -10,29 +10,39 @@ export const Footer = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isAboutPanelOpen, setIsAboutPanelOpen] = useState(false);
   const langLink = useLangLink();
+
+  const [isAboutPanelOpen, setIsAboutPanelOpen] = useState(false);
+
   const quickLinks = [
-    { key: "footer.links.home", href: langLink("/") },
-    { key: "footer.links.services", href: "#services" }, // scroll داخلي
-    { key: "footer.links.about", href: "#about" }, // scroll داخلي
-    { key: "footer.links.contact", href: langLink("/contact") },
+    { key: "footer.links.home", type: "link", href: langLink("/") },
+    { key: "footer.links.services", type: "services" },
+    { key: "footer.links.about", type: "about" },
+    { key: "footer.links.contact", type: "link", href: langLink("/contact") },
   ];
 
   const services = [
-    { key: "service.dropdown.storage", href: "#services" },
-    { key: "service.dropdown.logistics", href: "#services" },
-    { key: "service.dropdown.station", href: "#services" },
-    { key: "service.dropdown.consulting", href: "#services" },
+    { key: "service.dropdown.storage" },
+    { key: "service.dropdown.logistics" },
+    { key: "service.dropdown.station" },
+    { key: "service.dropdown.consulting" },
   ];
 
-  // دالة التمرير لقسم الخدمات
+  // ✅ Scroll ذكي لقسم الخدمات
   const handleScrollToServices = () => {
-    if (location.pathname === "/") {
+    const isHome =
+      location.pathname === `/${language}` ||
+      location.pathname === `/${language}/`;
+
+    if (isHome) {
       const section = document.getElementById("services");
-      if (section) section.scrollIntoView({ behavior: "smooth" });
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
-      navigate("/", { state: { scrollTo: "services" } });
+      navigate(langLink("/"), {
+        state: { scrollTo: "services" },
+      });
     }
   };
 
@@ -43,7 +53,7 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div>
-              <a href="/" className="flex items-center space-x-2 mb-4">
+              <a href={langLink("/")} className="flex items-center space-x-2 mb-4">
                 <img
                   src={logo}
                   alt="Petra Logo"
@@ -64,7 +74,7 @@ export const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => {
-                  if (link.key === "footer.links.about") {
+                  if (link.type === "about") {
                     return (
                       <li key={index}>
                         <button
@@ -75,7 +85,9 @@ export const Footer = () => {
                         </button>
                       </li>
                     );
-                  } else if (link.key === "footer.links.services") {
+                  }
+
+                  if (link.type === "services") {
                     return (
                       <li key={index}>
                         <button
@@ -87,6 +99,7 @@ export const Footer = () => {
                       </li>
                     );
                   }
+
                   return (
                     <li key={index}>
                       <a

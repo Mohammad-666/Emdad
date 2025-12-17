@@ -165,10 +165,10 @@ const Sustainability = () => {
     : 'Sustainability — Responsible Transport for a Sustainable Future';
 
   const introText = isArabic
-    ? `في إمداد مباشر، نعتبر الصحة والسلامة والأمن والبيئة والجودة (HSSEQ) مبادئ أساسية.
+    ? `في بيترا، نعتبر الصحة والسلامة والأمن والبيئة والجودة (HSSEQ) مبادئ أساسية.
 هذه ليست مجرد سياسات — إنها تمثل نوايانا والتزاماتنا لضمان سلامة جميع الأفراد المشاركين في النقل، وتقديم خدمات عالية الجودة للعملاء، وتقليل الأثر البيئي في صميم عملياتنا.
 نحن ملتزمون بالتحسين المستمر لعمليات النقل لجعلها أكثر أمانًا وكفاءة، بهدف منع الحوادث والإصابات والأمراض المهنية، مع الحفاظ على حوكمة قوية وحماية البيئة.`
-    : `At Imdad Direct, we consider Health, Safety, Security, Environment, and Quality (HSSEQ) to be essential principles.
+    : `At Petra, we consider Health, Safety, Security, Environment, and Quality (HSSEQ) to be essential principles.
 These are not just policies—they represent our intentions and commitments to ensure the safety of all individuals involved in transportation, provide high-quality services to customers, and minimize environmental impact at the core of our operations.
 We are committed to continuously improving transport operations to make them safer and more efficient, aiming to prevent accidents, injuries, and occupational illnesses, while maintaining strong governance and environmental protection.`;
 

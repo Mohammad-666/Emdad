@@ -148,11 +148,11 @@ const OurValues = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const introText = isArabic ? [
-    'كل ما تقوم به إمداد مباشر يسترشد بقيمها المؤسسية الأساسية: السلامة والمواطنة والنزاهة والمسؤولية والتميز.',
-    'من خلال تطبيق هذه القيم والالتزام بممارسات الأعمال السليمة، تحقق إمداد مباشر باستمرار مستويات عالية من الأداء والكفاءة، مما يخلق قيمة أكبر للشركة وعملائها وشركائها والمجتمعات التي تخدمها.'
+    'كل ما تقوم به بيترا يسترشد بقيمها المؤسسية الأساسية: السلامة والمواطنة والنزاهة والمسؤولية والتميز.',
+    'من خلال تطبيق هذه القيم والالتزام بممارسات الأعمال السليمة، تحقق بيترا باستمرار مستويات عالية من الأداء والكفاءة، مما يخلق قيمة أكبر للشركة وعملائها وشركائها والمجتمعات التي تخدمها.'
   ] : [
-    'Everything Imdad does is guided by its core corporate values: Safety, Citizenship, Integrity, Responsibility, and Excellence.',
-    'By applying these values and adhering to sound business practices, Imdad consistently achieves high levels of performance and efficiency, creating greater value for the company, its customers, partners, and the communities it serves.'
+    'Everything Petra does is guided by its core corporate values: Safety, Citizenship, Integrity, Responsibility, and Excellence.',
+    'By applying these values and adhering to sound business practices, Petra consistently achieves high levels of performance and efficiency, creating greater value for the company, its customers, partners, and the communities it serves.'
   ];
 
   const values = [
