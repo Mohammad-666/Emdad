@@ -1234,7 +1234,14 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const location = useLocation();
 
   const langParam = params.lang as Language | undefined;
-  const language: Language = langParam === "ar" || langParam === "en" ? langParam : "ar";
+  const { pathname } = location;
+  const pathFirst = pathname.split("/").filter(Boolean)[0] as Language | undefined;
+  const language: Language =
+    pathFirst === "ar" || pathFirst === "en"
+      ? pathFirst
+      : langParam === "ar" || langParam === "en"
+      ? langParam
+      : "ar";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -1243,9 +1250,23 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setLanguage = (newLang: Language) => {
     if (newLang === language) return;
-    navigate(location.pathname.replace(`/${language}`, `/${newLang}`), {
-      replace: true,
-    });
+    // Build a safe new pathname by replacing only the leading language segment
+    const { pathname, search, hash } = location;
+    const segments = pathname.split("/").filter(Boolean);
+    // If first segment is the language, replace it; otherwise, prepend
+    if (segments.length === 0) {
+      navigate(`/${newLang}${search}${hash}`, { replace: true });
+      return;
+    }
+
+    if (segments[0] === language) {
+      const rest = segments.slice(1).join("/");
+      const newPath = rest ? `/${newLang}/${rest}` : `/${newLang}`;
+      navigate(`${newPath}${search}${hash}`, { replace: true });
+    } else {
+      // Fallback: preserve the current pathname but prefix with the new language
+      navigate(`/${newLang}${pathname}${search}${hash}`, { replace: true });
+    }
   };
 
   const t = (key: string): string =>

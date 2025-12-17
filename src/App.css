@@ -1,8 +1,10 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  /* Let layout control width (use full viewport width on small devices)
+     Remove the fixed max-width/padding which caused horizontal overflow on mobile */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
 .logo {

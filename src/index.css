@@ -87,8 +87,16 @@ All colors MUST be HSL.
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  /* Use border-box throughout to avoid unexpected overflow from padding/margins */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Prevent horizontal scrolling on small devices while preserving vertical scroll */
+  html, body, #root {
+    overflow-x: hidden;
+    width: 100%;
+    min-width: 0;
   }
 
   body {
