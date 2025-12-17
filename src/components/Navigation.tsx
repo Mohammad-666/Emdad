@@ -157,7 +157,7 @@ export const Navigation = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t border-border"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4">
+            <div className={`container mx-auto px-4 py-4 space-y-4 ${language === "ar" ? "text-right" : "text-left"}`}>
               <Link to={langLink("/")}
                 className="block text-petroleum-green hover:text-royal-gold"
               >
@@ -165,9 +165,7 @@ export const Navigation = () => {
              </Link>
 
                <Link to={langLink("/contact")}
-              className={`text-sm font-medium transition-colors hover:text-royal-gold ${
-                isScrolled ? "text-petroleum-green" : "text-white"
-              }`}
+              className={`block text-petroleum-green text-sm font-medium transition-colors hover:text-royal-gold`}
             >
               {t("nav.contact")}
               </Link>
@@ -177,14 +175,14 @@ export const Navigation = () => {
                   setIsAboutPanelOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="block text-petroleum-green hover:text-royal-gold w-full text-left"
+                className={`block text-petroleum-green hover:text-royal-gold w-full ${language === "ar" ? "text-right" : "text-left"}`}
               >
                 {t("nav.about")}
               </button>
 
               <button
                 onClick={handleScrollToFAQ}
-                className="block text-petroleum-green hover:text-royal-gold w-full text-left"
+                className={`block text-petroleum-green hover:text-royal-gold w-full ${language === "ar" ? "text-right" : "text-left"}`}
               >
                 {t("nav.faq")}
               </button>
