@@ -66,7 +66,7 @@ export const Navigation = () => {
               <img
                 src={logo}
                 alt="Petra Logo"
-                className="h-10 w-auto transition-all duration-300"
+                className="h-12 md:h-14 w-auto transition-all duration-300"
               />
               <div
                 className={`text-2xl font-bold transition-colors ${
