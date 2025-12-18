@@ -625,10 +625,10 @@ const translations = {
     "contact.info.addressValue": "Damascus, Syria",
     "contact.hours.title": "Business Hours",
     "contact.hours.label": "Working Days",
-    "contact.hours.weekdays": "Sunday - Thursday",
+    "contact.hours.weekdays": "Saturday - Thursday",
     "contact.hours.timeLabel": "Hours",
     "contact.hours.time": "8:00 AM - 5:00 PM",
-    "contact.hours.closed": "Closed on Friday and Saturday",
+    "contact.hours.closed": "Closed on Friday ",
     "contact.location.title": "location",
     "contact.map.viewLarger": "View larger map",
   },
@@ -1217,10 +1217,10 @@ const translations = {
 
   "contact.hours.title": "ساعات العمل",
   "contact.hours.label": "أيام الدوام",
-  "contact.hours.weekdays": "من الأحد إلى الخميس",
+  "contact.hours.weekdays": "من السبت إلى الخميس",
   "contact.hours.timeLabel": "ساعات الدوام",
   "contact.hours.time": "8:00 صباحًا - 5:00 مساءً",
-  "contact.hours.closed": "مغلق يومي الجمعة والسبت",
+  "contact.hours.closed":" مغلق يوم الجمعة",
 
   "contact.location.title": "الموقع",
   "contact.map.viewLarger": "عرض الخريطة بحجم أكبر"
