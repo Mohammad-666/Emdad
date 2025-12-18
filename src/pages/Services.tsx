@@ -17,6 +17,7 @@ import engineerInspection from "@/assets/engineer-inspection.jpg";
 import gpsTracking from "@/assets/gps-tracking.jpg";
 import tankerTrucks from "@/assets/tanker-trucks.jpg";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 
 // Lazy loading image component
 const LazyImage = ({ 
@@ -437,6 +438,7 @@ const WhyChooseUsSection = ({ t, language }: { t: (key: string) => string; langu
 // CTA Section
 const CTASection = ({ t, language }: { t: (key: string) => string; language: string }) => {
   const langLink = useLangLink(); // استخدم hook هنا
+  const navigate = useNavigate();
 
   return (
     <section className="py-24 bg-gradient-to-r from-petroleum-green to-petroleum-green/90">
@@ -454,14 +456,14 @@ const CTASection = ({ t, language }: { t: (key: string) => string; language: str
             {t('services.page.cta.text')}
           </p>
           
-          <motion.a
-            href={langLink("/contact")} // استخدم langLink للصفحات
+          <motion.button
+            onClick={() => navigate(langLink('/contact'))}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-royal-gold text-petroleum-green font-semibold rounded-xl hover:bg-royal-gold/90 transition-colors shadow-lg"
           >
             {t('services.page.cta.button')}
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

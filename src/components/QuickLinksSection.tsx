@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLangLink } from "@/hooks/useLangLink";
+import { Link } from "react-router-dom";
 import { HelpCircle, Phone, Shield } from "lucide-react";
 
 const quickLinks = [
@@ -62,15 +63,11 @@ export const QuickLinksSection = () => {
                     className="border-royal-gold text-royal-gold hover:bg-royal-gold hover:text-white"
                     asChild
                   >
-                    <a
-                      href={
-                        link.href.startsWith("#")
-                          ? link.href
-                          : langLink(link.href)
-                      }
-                    >
-                      {t(link.ctaKey)}
-                    </a>
+                    {link.href.startsWith("#") ? (
+                      <a href={link.href}>{t(link.ctaKey)}</a>
+                    ) : (
+                      <Link to={langLink(link.href)}>{t(link.ctaKey)}</Link>
+                    )}
                   </Button>
                 </CardContent>
               </Card>

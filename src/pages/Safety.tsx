@@ -10,6 +10,7 @@ import {
   HardHat, Eye, MapPin, Bell, Gauge, Lock
 } from "lucide-react";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 
 // Image imports
 import safetyHero from "@/assets/safety-hero.jpg";
@@ -547,6 +548,7 @@ const MonitoringSection = ({ t, language }: { t: (key: string) => string; langua
 export const CTASection = ({ t, language }: { t: (key: string) => string; language: string }) => {
   const { dir } = useLanguage();
   const langLink = useLangLink();
+  const navigate = useNavigate();
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-ash-gray/30">
@@ -573,14 +575,14 @@ export const CTASection = ({ t, language }: { t: (key: string) => string; langua
             {t('safety.page.cta.text')}
           </p>
           
-          <motion.a
-            href={langLink("/contact")} // استخدم langLink للزر
+          <motion.button
+            onClick={() => navigate(langLink('/contact'))}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-petroleum-green text-white font-semibold rounded-xl hover:bg-petroleum-green/90 transition-colors shadow-lg shadow-petroleum-green/30"
           >
             {t('safety.page.cta.button')}
-          </motion.a>
+          </motion.button>
           
           <motion.p
             initial={{ opacity: 0 }}

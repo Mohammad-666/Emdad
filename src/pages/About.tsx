@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-main.jpg";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 // Timeline data
 const timelineData = [
   { year: "2019", key: "timeline.2019" },
@@ -74,6 +75,7 @@ const About = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
   const langLink = useLangLink();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background" dir={dir}>
@@ -142,7 +144,7 @@ const About = () => {
               <Button
                 size="lg"
                 className="bg-royal-gold hover:bg-royal-gold/90 text-petroleum-green font-semibold px-8 py-6 text-lg"
-                onClick={() => (window.location.href = langLink("/contact"))}
+                onClick={() => navigate(langLink("/contact"))}
               >
                 {t("about.hero.cta1")}
                 <Phone
@@ -163,7 +165,7 @@ const About = () => {
     hover:border-petroleum-green
     transition-all duration-300
   "
-                onClick={() => (window.location.href = langLink("/services"))}
+                onClick={() => navigate(langLink("/services"))}
               >
                 {t("about.hero.cta2")}
                 <ArrowRight
@@ -500,7 +502,7 @@ const About = () => {
             <Button
               size="lg"
               className="bg-royal-gold hover:bg-royal-gold/90 text-petroleum-green font-semibold px-10 py-6 text-lg"
-              onClick={() => (window.location.href = langLink("/contact"))} // ربط الزر بالصفحة
+              onClick={() => navigate(langLink("/contact"))} // ربط الزر بالصفحة
             >
               {t("about.cta.button")}
               <ArrowRight

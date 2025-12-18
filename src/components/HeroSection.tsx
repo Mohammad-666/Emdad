@@ -96,7 +96,8 @@ export const HeroSection = () => {
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       } else {
-        window.location.href = `/#${slide.ctaTarget}`;
+        // navigate to home with hash to allow SPA routing without full reload
+        navigate(`${langLink('/')}#${slide.ctaTarget}`);
       }
     } else {
       // استخدم التنقل الداخلي لروابط الصفحات لتجنّب طلب كامل للسيرفر

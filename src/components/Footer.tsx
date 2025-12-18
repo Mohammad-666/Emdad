@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useLangLink } from "@/hooks/useLangLink";
 import logo from "@/assets/PETRA-Logo.png";
 import { AboutPanel } from "@/components/AboutPanel";
@@ -53,23 +53,23 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div>
-              <a href={langLink("/")} className="flex items-center space-x-2 mb-4">
+              <Link to={langLink("/")} className="flex items-center space-x-2 mb-4">
                 <img
                   src={logo}
                   alt="Petra Logo"
                   className="h-10 w-auto transition-all duration-300"
                 />
                 <div className="text-2xl font-bold text-white">PETRA</div>
-              </a>
+              </Link>
 
               <p className="text-white/70 text-sm leading-relaxed mb-6">
                 {t("footer.description")}
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-6">
+                    <Link
+                        to={link.href}
+                        className="text-white/70 hover:text-royal-gold transition-colors text-sm"
+                      >
+                        {t(link.key)}
+                      </Link>
                 {t("footer.quickLinks")}
               </h4>
               <ul className="space-y-3">

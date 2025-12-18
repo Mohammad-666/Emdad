@@ -8,6 +8,7 @@ import {
   Fuel, Route, Clock, Award, CheckCircle2, Zap
 } from "lucide-react";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 
 // Image imports
 import activitiesHero from "@/assets/activities-hero.jpg";
@@ -387,6 +388,7 @@ const CapabilitiesSection = ({ t, language }: { t: (key: string) => string; lang
 const CTASection = ({ t, language }: { t: (key: string) => string; language: string }) => {
   const { dir } = useLanguage();
   const langLink = useLangLink();
+  const navigate = useNavigate();
 
   return (
     <section className="py-24 bg-gradient-to-b from-ash-gray/30 to-white">
@@ -404,14 +406,14 @@ const CTASection = ({ t, language }: { t: (key: string) => string; language: str
             {t('activities.cta.text')}
           </p>
           
-          <motion.a
-            href={langLink("/contact")} // استخدم langLink للزر
+          <motion.button
+            onClick={() => navigate(langLink('/contact'))}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-petroleum-green text-white font-semibold rounded-xl hover:bg-petroleum-green/90 transition-colors shadow-lg shadow-petroleum-green/30"
           >
             {t('activities.cta.button')}
-          </motion.a>
+          </motion.button>
           
           <motion.p
             initial={{ opacity: 0 }}

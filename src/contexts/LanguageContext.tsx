@@ -643,7 +643,7 @@ const translations = {
     "hero.slide1.subtitle":
       "تخزين متكامل، لوجستيات، واستشارات لقطاع النفط والغاز",
     "hero.slide1.cta": "ابدأ الآن",
-    "hero.slide2.title": "لماذا بترا؟",
+    "hero.slide2.title": "لماذا بيترا؟",
     "hero.slide2.subtitle":
       "لأننا نجمع بين الخبرة العميقة والنزاهة التشغيلية والدقة",
     "hero.slide2.cta": "اكتشف السبب",
@@ -736,9 +736,9 @@ const translations = {
     "cta.button2": "اعرف المزيد",
     "faq.title": "الأسئلة الشائعة",
     "faq.subtitle": "اعثر على إجابات للأسئلة الشائعة حول خدماتنا.",
-    "faq.q1": "ما هي الخدمات التي تقدمها بترا؟",
+    "faq.q1": "  ما هي الخدمات التي تقدمها بيترا؟",
     "faq.a1":
-      "تقدم بترا خدمات بترولية شاملة تشمل حلول التخزين وإدارة سلسلة التوريد والاستثمار وتشغيل محطات الوقود.",
+     " بيترا تقدم خدمات بترولية شاملة تشمل حلول التخزين وإدارة سلسلة التوريد والاستثمار وتشغيل محطات الوقود.",
     "faq.q2": "ما هي معايير السلامة التي تتبعونها؟",
     "faq.a2": "نلتزم بمعايير صارمة للصحة والسلامة والبيئة الدولية.",
     "faq.q3": "أين تتوفر خدماتكم؟",
@@ -749,9 +749,9 @@ const translations = {
     "faq.q5": "هل تقدمون فرص شراكة؟",
     "faq.a5":
       "نعم، نسعى بنشاط للشراكات الاستراتيجية مع الشركات في قطاع النفط والغاز.",
-    "faq.q6": "ما الذي يميز بترا عن المنافسين؟",
+    "faq.q6": "ما الذي يميز بيترا عن المنافسين؟",
     "faq.a6":
-      "تجمع بترا بين الخبرة العميقة في الصناعة والنزاهة التشغيلية والحلول المبتكرة.",
+      "تجمع بيترا بين الخبرة العميقة في الصناعة والنزاهة التشغيلية والحلول المبتكرة.",
     "footer.description":
       "متخصصون في إدارة وتخزين ولوجستيات المشتقات البترولية.",
     "footer.quickLinks": "روابط سريعة",
@@ -820,19 +820,19 @@ const translations = {
       "دعنا نساعدك على تحقيق التميز في تخزين ولوجستيات واستشارات البترول.",
     "about.cta.button": "ابدأ اليوم",
     // About Panel
-    "panel.title": "اكتشف بترا",
+    "panel.title": "اكتشف بيترا",
     "panel.about": "من نحن",
     "panel.activities": "الأنشطة",
     "panel.safety": "السلامة",
     "panel.services": "الخدمات",
-    "panel.whyPetra": "لماذا بترا",
+    "panel.whyPetra": "لماذا بيترا",
     "panel.governance": "الحوكمة المؤسسية",
     "panel.ethics": "الأخلاق والحوكمة",
     "panel.values": "قيمنا",
     "panel.sustainability": "الاستدامة",
     "panel.back": "رجوع",
     // Why Petra Page
-    "whyPetra.hero.title": "لماذا تختار بترا؟",
+    "whyPetra.hero.title": "لماذا تختار بيترا؟",
     "whyPetra.hero.subtitle":
       "شريكك الاستراتيجي في حلول الوقود… حيث تبدأ الثقة.",
     "whyPetra.strengths.label": "نقاط قوتنا",
@@ -1234,14 +1234,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   const location = useLocation();
 
   const langParam = params.lang as Language | undefined;
-  const { pathname } = location;
-  const pathFirst = pathname.split("/").filter(Boolean)[0] as Language | undefined;
-  const language: Language =
-    pathFirst === "ar" || pathFirst === "en"
-      ? pathFirst
-      : langParam === "ar" || langParam === "en"
-      ? langParam
-      : "ar";
+  const language: Language = langParam === "ar" || langParam === "en" ? langParam : "ar";
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -1250,23 +1243,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setLanguage = (newLang: Language) => {
     if (newLang === language) return;
-    // Build a safe new pathname by replacing only the leading language segment
-    const { pathname, search, hash } = location;
-    const segments = pathname.split("/").filter(Boolean);
-    // If first segment is the language, replace it; otherwise, prepend
-    if (segments.length === 0) {
-      navigate(`/${newLang}${search}${hash}`, { replace: true });
-      return;
-    }
-
-    if (segments[0] === language) {
-      const rest = segments.slice(1).join("/");
-      const newPath = rest ? `/${newLang}/${rest}` : `/${newLang}`;
-      navigate(`${newPath}${search}${hash}`, { replace: true });
-    } else {
-      // Fallback: preserve the current pathname but prefix with the new language
-      navigate(`/${newLang}${pathname}${search}${hash}`, { replace: true });
-    }
+    navigate(location.pathname.replace(`/${language}`, `/${newLang}`), {
+      replace: true,
+    });
   };
 
   const t = (key: string): string =>

@@ -3,14 +3,16 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Handshake } from "lucide-react";
 import { useLangLink } from "@/hooks/useLangLink";
+import { useNavigate } from "react-router-dom";
 
 export const CTASection = () => {
   const { t, language } = useLanguage();
   const langLink = useLangLink();
+  const navigate = useNavigate();
 
   const handleCTA = () => {
     // هنا نضع رابط الصفحة المراد فتحها، مثال:
-    window.location.href = langLink("/contact");
+    navigate(langLink("/contact"));
   };
 
   return (
