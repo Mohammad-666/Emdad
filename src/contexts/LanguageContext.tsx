@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 type Language = "en" | "ar";
 
@@ -1229,12 +1229,16 @@ const translations = {
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const params = useParams();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const langParam = params.lang as Language | undefined;
-  const language: Language = langParam === "ar" || langParam === "en" ? langParam : "ar";
+  // Derive language from first path segment (robust even when provider is outside Route context)
+  const getLanguageFromPath = (path: string): Language => {
+    const first = path.split("/").filter(Boolean)[0];
+    return first === "ar" || first === "en" ? (first as Language) : "ar";
+  };
+
+  const language: Language = getLanguageFromPath(location.pathname);
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -1243,9 +1247,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setLanguage = (newLang: Language) => {
     if (newLang === language) return;
-    navigate(location.pathname.replace(`/${language}`, `/${newLang}`), {
-      replace: true,
-    });
+    const segments = location.pathname.split("/").filter(Boolean);
+    if (segments.length === 0) {
+      navigate(`/${newLang}`, { replace: true });
+      return;
+    }
+    segments[0] = newLang;
+    navigate(`/${segments.join("/")}`, { replace: true });
   };
 
   const t = (key: string): string =>
