@@ -1249,11 +1249,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     if (newLang === language) return;
     const segments = location.pathname.split("/").filter(Boolean);
     if (segments.length === 0) {
-      navigate(`/${newLang}`, { replace: true });
+      navigate(`/${newLang}${location.search}${location.hash}`, {
+        replace: true,
+        state: { langToggle: true },
+      });
       return;
     }
     segments[0] = newLang;
-    navigate(`/${segments.join("/")}`, { replace: true });
+    navigate(`/${segments.join("/")}${location.search}${location.hash}`, {
+      replace: true,
+      state: { langToggle: true },
+    });
   };
 
   const t = (key: string): string =>
