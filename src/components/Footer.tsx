@@ -64,12 +64,12 @@ export const Footer = () => {
 
               <p className="text-white/70 text-sm leading-relaxed mb-6">
                 {t("footer.description")}
-                    <Link
-                        to={link.href}
-                        className="text-white/70 hover:text-royal-gold transition-colors text-sm"
-                      >
-                        {t(link.key)}
-                      </Link>
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6">
                 {t("footer.quickLinks")}
               </h4>
               <ul className="space-y-3">
@@ -102,12 +102,12 @@ export const Footer = () => {
 
                   return (
                     <li key={index}>
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.href}
                         className="text-white/70 hover:text-royal-gold transition-colors text-sm"
                       >
                         {t(link.key)}
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}

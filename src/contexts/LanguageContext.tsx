@@ -692,7 +692,7 @@ const translations = {
     "service.dropdown.consulting": "الاستشارات الفنية والهندسية",
     "about.title": "من نحن",
     "about.description":
-      "بترا شركة متخصصة في إدارة وتخزين ولوجستيات المشتقات البترولية. نعمل وفق معايير رائدة في الصناعة لضمان حلول طاقة آمنة وموثوقة.",
+      "بيترا شركة متخصصة في إدارة وتخزين ولوجستيات المشتقات البترولية. نعمل وفق معايير رائدة في الصناعة لضمان حلول طاقة آمنة وموثوقة.",
     "about.vision.title": "رؤيتنا",
     "about.vision.text":
       "أن نكون الشريك الموثوق والرائد في خدمات لوجستيات وتخزين البترول.",
@@ -894,7 +894,7 @@ const translations = {
     "vehicleControl.trafficFlow.desc": "أنماط حركة مرور محسنة لأقصى كفاءة.",
     "whyPetra.closing.text":
       "نقدم حلول لوجستية متكاملة حيث تأتي السلامة والكفاءة أولاً…",
-    "whyPetra.closing.signature": "بترا — شريكك الموثوق",
+    "whyPetra.closing.signature": "بيترا — شريكك الموثوق",
     "pillars.label": "الركائز الأساسية",
     "pillars.title": "ما يحركنا",
     "pillars.technology.title": "تكنولوجيا متقدمة",
