@@ -147,20 +147,13 @@ const Storage = () => {
             <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-3xl mx-auto">
               {t('storage.hero.subtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/quote">
-                <Button size="lg" className="text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
+            <div className="flex justify-center">
+              <Link to="/quote" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
                   {t('storage.cta.quote')}
                   <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all duration-500"
-              >
-                {t('storage.cta.contact')}
-              </Button>
             </div>
           </div>
         </div>

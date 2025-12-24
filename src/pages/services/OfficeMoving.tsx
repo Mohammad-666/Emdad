@@ -110,27 +110,20 @@ const OfficeMoving = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl animate-fade-in-up">
+          <div className="max-w-4xl animate-fade-in-up text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               {t('officeMoving.hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-3xl">
               {t('officeMoving.hero.subtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/quote">
-                <Button size="lg" className="text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
+            <div className="flex">
+              <Link to="/quote" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
                   {t('officeMoving.hero.ctaPrimary')}
                   <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all duration-500"
-              >
-                {t('officeMoving.hero.ctaSecondary')}
-              </Button>
             </div>
           </div>
         </div>
