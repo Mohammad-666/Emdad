@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { AboutPanel } from './AboutPamel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import {
@@ -15,6 +16,7 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -92,31 +94,16 @@ const Navbar = () => {
               {t('nav.home')}
             </Link>
 
-            {/* Services Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className={`flex items-center space-x-1 rtl:space-x-reverse font-medium transition-colors hover:text-primary ${
-                    isScrolled ? 'text-foreground' : 'text-white'
-                  }`}
-                >
-                  <span>{t('nav.services')}</span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-white shadow-elegant" align={language === 'ar' ? 'start' : 'end'}>
-                {serviceLinks.map((link) => (
-                  <DropdownMenuItem key={link.label} asChild>
-                    <Link
-                      to={link.href}
-                      className="cursor-pointer hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Services opens AboutPanel */}
+            <button
+              onClick={() => setIsAboutOpen(true)}
+              className={`flex items-center space-x-1 rtl:space-x-reverse font-medium transition-colors hover:text-primary ${
+                isScrolled ? 'text-foreground' : 'text-white'
+              }`}
+            >
+              <span>{t('nav.services')}</span>
+              <ChevronDown className="w-4 h-4" />
+            </button>
 
             {/* About Link */}
             <Link
@@ -254,6 +241,8 @@ const Navbar = () => {
             </div>
           </div>
         )}
+        {/* About Panel portal (desktop) */}
+        <AboutPanel isOpen={isAboutOpen} onClose={() => setIsAboutOpen(false)} />
       </div>
     </nav>
   );

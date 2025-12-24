@@ -19,108 +19,108 @@ import packingService from '@/assets/home-moving-packing.jpg';
 import cityNight from '@/assets/hero-city-night.jpg';
 
 const Storage = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const isRTL = language === 'ar';
 
   const storageFeatures = [
     {
       icon: Video,
-      title: '24/7 Surveillance',
-      description: 'Continuous monitoring with advanced security cameras throughout all facilities.'
+      title: t('storage.feature.surveillance.title'),
+      description: t('storage.feature.surveillance.description'),
     },
     {
       icon: ThermometerSun,
-      title: 'Climate-Controlled',
-      description: 'Temperature and humidity-controlled units to preserve your belongings.'
+      title: t('storage.feature.climate.title'),
+      description: t('storage.feature.climate.description'),
     },
     {
       icon: Shield,
-      title: 'Insurance Options',
-      description: 'Comprehensive coverage plans for added peace of mind and protection.'
+      title: t('storage.feature.insurance.title'),
+      description: t('storage.feature.insurance.description'),
     },
     {
       icon: Lock,
-      title: 'Secure Access',
-      description: 'Advanced alarm systems and controlled entry for maximum security.'
-    }
+      title: t('storage.feature.access.title'),
+      description: t('storage.feature.access.description'),
+    },
   ];
 
   const convenienceFeatures = [
     {
       icon: MapPin,
-      title: 'Extensive Network',
-      description: 'Over 500 locations across North America for convenient access wherever you are.',
-      detail: 'We have over 500 locations in North America to help you find a facility close to where you live. You work with a personal coordinator who can help organize your move, utilizing our nationwide resources for your benefit.'
+      title: t('storage.convenience.network.title'),
+      description: t('storage.convenience.network.description'),
+      detail: t('storage.convenience.network.detail'),
     },
     {
       icon: Eye,
-      title: 'Easy Access',
-      description: 'Flexible access to your storage units and portable containers anytime you need.',
-      detail: 'With our portable storage containers and local storage units, you can easily access these options anytime to store items or remove them when needed.'
+      title: t('storage.convenience.access.title'),
+      description: t('storage.convenience.access.description'),
+      detail: t('storage.convenience.access.detail'),
     },
     {
       icon: Clock,
-      title: 'Short-Term Storage',
-      description: 'Perfect for temporary needs during relocation or home renovations.',
-      detail: 'Use our short-term storage solutions when you\'re in the midst of relocation and don\'t have a new residence yet. We provide storage options close to where you live for quick and easy transport.'
+      title: t('storage.convenience.shortTerm.title'),
+      description: t('storage.convenience.shortTerm.description'),
+      detail: t('storage.convenience.shortTerm.detail'),
     },
     {
       icon: Calendar,
-      title: 'Long-Term Storage',
-      description: 'Secure permanent storage solutions for items that won\'t fit in your home.',
-      detail: 'If you need space to store special items that won\'t fit in your home, you can rely on MoveLine for long-term storage. We offer climate-controlled units in facilities with 24-hour surveillance.'
-    }
+      title: t('storage.convenience.longTerm.title'),
+      description: t('storage.convenience.longTerm.description'),
+      detail: t('storage.convenience.longTerm.detail'),
+    },
   ];
 
   const moveTypes = [
     {
       icon: Home,
-      title: 'Household Moves',
-      description: 'Often involve short-term storage for a smooth transition between homes'
+      title: t('storage.move.household.title'),
+      description: t('storage.move.household.description'),
     },
     {
       icon: Globe,
-      title: 'Cross Country Moves',
-      description: 'Secure, climate-controlled, and accessible long-term storage for belongings in transit'
+      title: t('storage.move.crossCountry.title'),
+      description: t('storage.move.crossCountry.description'),
     },
     {
       icon: Truck,
-      title: 'Long-Distance Moves',
-      description: 'Require reliable storage for items until the new home is ready'
+      title: t('storage.move.longDistance.title'),
+      description: t('storage.move.longDistance.description'),
     },
     {
       icon: Package,
-      title: 'International Moves',
-      description: 'Secure storage solutions while navigating customs and transport logistics'
+      title: t('storage.move.international.title'),
+      description: t('storage.move.international.description'),
     },
     {
       icon: Building2,
-      title: 'Commercial Moves',
-      description: 'Storage for office furniture and equipment during business setup'
-    }
+      title: t('storage.move.commercial.title'),
+      description: t('storage.move.commercial.description'),
+    },
   ];
 
   const faqs = [
     {
-      question: 'How long will it take to move my belongings?',
-      answer: 'With MoveLine portable storage containers, you have the flexibility to take as much time as you need. As part of our moving and storage service, we\'ll help you determine how much time you need for your move and how long transport will take.'
+      question: t('storage.faq.q1'),
+      answer: t('storage.faq.a1'),
     },
     {
-      question: 'What happens if something is damaged during the move?',
-      answer: 'Our professional movers are trained and experienced in moving households and commercial businesses. We carefully pack and store your items under 24-hour surveillance to prevent accidents and damage. MoveLine is licensed and bonded and offers insurance to cover losses if the unexpected happens during a move.'
+      question: t('storage.faq.q2'),
+      answer: t('storage.faq.a2'),
     },
     {
-      question: 'How do I access my belongings in storage?',
-      answer: 'We can find a storage solution near you, giving you convenient access to your belongings anytime. Our storage facilities have 24-hour surveillance cameras to help you feel safe visiting your storage unit anytime, day or night. You will know where your belongings are at all times.'
+      question: t('storage.faq.q3'),
+      answer: t('storage.faq.a3'),
     },
     {
-      question: 'What is your security protocol for storage facilities?',
-      answer: 'We provide 24-hour surveillance cameras in the storage facilities to monitor activities within the facility. We also have alarm systems set up to prevent unauthorized access in our climate-controlled facilities for complete peace of mind.'
+      question: t('storage.faq.q4'),
+      answer: t('storage.faq.a4'),
     },
     {
-      question: 'What happens if I need to extend my storage period?',
-      answer: 'We offer flexibility in our storage options, allowing you to extend the amount of time you use our moving and storage services. You can keep your items in our short-term storage units for up to 90 days. If you need longer-term storage, we provide permanent storage solutions for as long as necessary.'
-    }
+      question: t('storage.faq.q5'),
+      answer: t('storage.faq.a5'),
+    },
   ];
 
   return (
@@ -134,49 +134,33 @@ const Storage = () => {
             alt="MoveLine Moving and Storage Services"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2D5F3F]/95 via-[#3A7D54]/85 to-[#2D5F3F]/75" />
-          <div className="absolute inset-0 opacity-20">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="golden-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                  <circle cx="50" cy="50" r="2" fill="#D4AF37" opacity="0.3"/>
-                  <path d="M50 30 L70 50 L50 70 L30 50 Z" fill="none" stroke="#D4AF37" strokeWidth="0.5" opacity="0.2"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#golden-pattern)" />
-            </svg>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.1),transparent_50%)]" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 max-w-5xl">
-          <div className="animate-fade-in-up text-center">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl animate-fade-in-up text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-              Your Trusted Company for <br />
-              <span className="text-[#D4AF37] font-extrabold">Moving and Storage Services</span>
+              {t('storage.hero.titlePrefix')} <br />
+              <span className="text-[#D4AF37] font-extrabold">{t('storage.hero.titleEmphasis')}</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-4xl mx-auto">
-              <span className="font-semibold text-[#D4AF37]">MoveLine</span> — Safe, Smart, and Secure Relocation & Storage Solutions
-            </p>
-            <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed drop-shadow-lg max-w-4xl mx-auto">
-              When you need a moving and storage company that provides a full range of services to help you stay organized and reduce the stress of relocation, you can rely on MoveLine. We provide complete moving and storage services for residential, commercial, and international needs.
+            <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-3xl mx-auto">
+              {t('storage.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/quote">
-                <Button size="lg" className="text-lg px-10 py-7 bg-[#2D5F3F] text-white hover:bg-[#3A7D54] shadow-glow-strong transition-all duration-500 hover:scale-105">
-                  Get a Quote
+                <Button size="lg" className="text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
+                  {t('storage.cta.quote')}
                   <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-[#2D5F3F] transition-all duration-500"
-                >
-                  Contact Us
-                  <Phone className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
-                </Button>
-              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all duration-500"
+              >
+                {t('storage.cta.contact')}
+              </Button>
             </div>
           </div>
         </div>
@@ -205,17 +189,17 @@ const Storage = () => {
             </div>
             <div className="animate-fade-in order-1 md:order-2">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Complete Moving & Storage Solutions
+                {t('storage.section.complete.title')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                We offer assistance with household moves, corporate relocation, and international moves, including packing and unpacking, loading and unloading, and transport.
+                {t('storage.section.complete.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                We also provide storage solutions with our portable storage containers that allow you to pack on your own schedule. Our movers are experienced and trained in the moving process for safe and secure transportation.
+                {t('storage.section.complete.p2')}
               </p>
               <Link to="/quote">
                 <Button size="lg" className="mt-4 bg-[#2D5F3F] text-white hover:bg-[#3A7D54]">
-                  Get a Quote
+                  {t('storage.cta.quote')}
                   <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>
@@ -225,13 +209,13 @@ const Storage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Residential Storage
+                {t('storage.section.residential.title')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                We alleviate the stress that comes from moving on a strict timeline by providing various moving and storage solutions. MoveLine offers portable storage containers if you need more time to pack up your home before your move.
+                {t('storage.section.residential.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We also provide temporary and long-term storage to protect your belongings until you're settled in your new space. Use our permanent storage if your new home doesn't have the space for everything.
+                {t('storage.section.residential.p2')}
               </p>
             </div>
             <div className="animate-fade-in">
@@ -257,13 +241,13 @@ const Storage = () => {
             </div>
             <div className="animate-fade-in">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Commercial Storage
+                {t('storage.section.commercial.title')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                Moving an office, retail store, or another business can be daunting as you coordinate dates and organize tasks.
+                {t('storage.section.commercial.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                As your professional moving and storage company, we alleviate many of the challenges of a commercial move by providing temporary and permanent storage in secure facilities for your property on a national and international level.
+                {t('storage.section.commercial.p2')}
               </p>
             </div>
           </div>
@@ -274,13 +258,13 @@ const Storage = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Looking for Local Storage Solutions Near You?
+              {t('storage.section.local.title')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Choose a moving service you can trust with more than 500 locations in North America. You can find a location near you for convenient access to moving supplies and storage options.
+              {t('storage.section.local.p1')}
             </p>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed mt-4">
-              You'll work with a moving coordinator who can help you with planning and implementing the move as you determine how much storage you need and for what length of time.
+              {t('storage.section.local.p2')}
             </p>
           </div>
         </div>
@@ -290,10 +274,10 @@ const Storage = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Security and Protection Features
+              {t('storage.section.security.title')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Rest easy knowing your belongings are protected by modern safety and security features. Our team will help you decide what kind of storage solutions work best for you.
+              {t('storage.section.security.p')}
             </p>
           </div>
 
@@ -338,10 +322,10 @@ const Storage = () => {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Convenience and Accessibility
+              {language === 'ar' ? 'الراحة وسهولة الوصول' : 'Convenience and Accessibility'}
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              MoveLine's global network makes storage options convenient and accessible to where you live now or your new location.
+              {language === 'ar' ? 'شبكة موف لاين تجعل خيارات التخزين مريحة وقابلة للوصول حيثما تكون الآن أو في موقعك الجديد.' : "MoveLine's global network makes storage options convenient and accessible to where you live now or your new location."}
             </p>
           </div>
 
@@ -381,13 +365,13 @@ const Storage = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Why You Need Storage
+              {language === 'ar' ? 'لماذا تحتاج إلى التخزين' : 'Why You Need Storage'}
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Storage solutions are designed to fit your needs, whether you have a gap between moving dates or need a place to store items until you find a new home.
+              {language === 'ar' ? 'تم تصميم حلول التخزين لتناسب احتياجاتك، سواء كان لديك فجوة بين تواريخ الانتقال أو تحتاج إلى مكان لتخزين الأغراض حتى تجد منزلاً جديدًا.' : 'Storage solutions are designed to fit your needs, whether you have a gap between moving dates or need a place to store items until you find a new home.'}
             </p>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed mt-4">
-              Trust MoveLine when you need a place to store belongings during renovation, when showing your home for sale, or when downsizing into a smaller space.
+              {language === 'ar' ? 'ثق في موف لاين عندما تحتاج مكانًا لتخزين المتعلقات أثناء التجديد، أو عند عرض منزلك للبيع، أو عند الانتقال لمساحة أصغر.' : 'Trust MoveLine when you need a place to store belongings during renovation, when showing your home for sale, or when downsizing into a smaller space.'}
             </p>
           </div>
         </div>
@@ -397,10 +381,10 @@ const Storage = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Different Types of Moves and Storage Needs
+              {language === 'ar' ? 'أنواع النقل وحاجات التخزين المختلفة' : 'Different Types of Moves and Storage Needs'}
             </h2>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              We offer storage options, such as portable storage containers, short-term storage and long-term facilities to keep your belongings safe to provide a smooth transition to a new home or office.
+              {language === 'ar' ? 'نقدم خيارات تخزين مثل الحاويات المحمولة، التخزين قصير الأجل والمرافق طويلة الأجل لحماية متعلقاتك وتسهيل الانتقال إلى منزل أو مكتب جديد.' : 'We offer storage options, such as portable storage containers, short-term storage and long-term facilities to keep your belongings safe to provide a smooth transition to a new home or office.'}
             </p>
           </div>
 
@@ -433,7 +417,7 @@ const Storage = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Moving & Storage FAQs
+              {language === 'ar' ? 'الأسئلة الشائعة حول النقل والتخزين' : 'Moving & Storage FAQs'}
             </h2>
           </div>
 
@@ -471,10 +455,10 @@ const Storage = () => {
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
           <div className="animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-              Ready to Simplify Your Move?
+              {language === 'ar' ? 'هل أنت جاهز لتبسيط عملية الانتقال؟' : 'Ready to Simplify Your Move?'}
             </h2>
             <p className="text-xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-3xl mx-auto">
-              Get started with MoveLine today and experience stress-free moving and storage solutions tailored to your needs.
+              {language === 'ar' ? 'ابدأ مع موف لاين اليوم واستمتع بحلول نقل وتخزين خالية من التوتر ومصممة حسب احتياجاتك.' : 'Get started with MoveLine today and experience stress-free moving and storage solutions tailored to your needs.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/quote">
@@ -482,7 +466,7 @@ const Storage = () => {
                   size="lg"
                   className="text-lg px-12 py-7 bg-[#D4AF37] text-white hover:bg-[#C4A030] shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105"
                 >
-                  Get Your Free Quote
+                  {language === 'ar' ? 'احصل على عرض سعر مجاني' : 'Get Your Free Quote'}
                   <CheckCircle2 className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>
@@ -492,7 +476,7 @@ const Storage = () => {
                   variant="outline"
                   className="text-lg px-12 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-[#2D5F3F] transition-all duration-500"
                 >
-                  Contact Us Today
+                  {language === 'ar' ? 'تواصل معنا اليوم' : 'Contact Us Today'}
                   <Phone className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
               </Link>

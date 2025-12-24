@@ -93,30 +93,46 @@ const HomeMoving = () => {
     <div className="min-h-screen bg-background" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
             alt="MoveLine Household Moving"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.1),transparent_50%)]" />
         </div>
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl animate-fade-in">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+          <div className="max-w-4xl animate-fade-in-up">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
               {t('householdMoving.hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg max-w-3xl">
               {t('householdMoving.hero.subtitle')}
             </p>
-            <Link to="/quote">
-              <Button size="lg" className="text-lg px-8 py-6 shadow-glow hover:shadow-elegant transition-all duration-300">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/quote">
+                <Button size="lg" className="text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
+                  {t('householdMoving.hero.cta')}
+                  <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
+                </Button>
+              </Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all duration-500"
+              >
                 {t('householdMoving.hero.cta')}
-                <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
               </Button>
-            </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+            <div className="w-1 h-3 bg-white/70 rounded-full" />
           </div>
         </div>
       </section>

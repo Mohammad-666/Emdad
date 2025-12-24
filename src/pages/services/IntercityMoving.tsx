@@ -95,8 +95,8 @@ const IntercityMoving = () => {
             alt="Interstate Moving Highway"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#006241]/90 via-[#006241]/70 to-[#006241]/50" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.1),transparent_50%)]" />
         </div>
 
         <div className="absolute top-0 left-0 w-32 h-32 opacity-20">
@@ -121,7 +121,7 @@ const IntercityMoving = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/quote">
-                <Button size="lg" className="text-lg px-10 py-7 bg-[#D4AF37] text-white hover:bg-[#C4A030] shadow-glow-strong transition-all duration-500 hover:scale-105">
+                <Button size="lg" className="text-lg px-10 py-7 shadow-glow-strong hover:shadow-elegant transition-all duration-500 hover:scale-105">
                   {t('interstateMoving.hero.ctaPrimary')}
                   <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-5 w-5`} />
                 </Button>
@@ -129,7 +129,7 @@ const IntercityMoving = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-[#006241] transition-all duration-500"
+                className="text-lg px-10 py-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-foreground transition-all duration-500"
               >
                 {t('interstateMoving.hero.ctaSecondary')}
               </Button>

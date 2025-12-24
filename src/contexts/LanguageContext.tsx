@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import storageTranslations from '@/locales/storage';
 
 type Language = 'en' | 'ar';
 
@@ -1146,6 +1147,10 @@ const translations = {
     'auth.errors.fullNameRequired': 'الاسم الكامل مطلوب',
   },
 };
+
+// merge module-specific translations (keeps LanguageContext file smaller)
+Object.assign(translations.en, storageTranslations.en || {});
+Object.assign(translations.ar, storageTranslations.ar || {});
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
