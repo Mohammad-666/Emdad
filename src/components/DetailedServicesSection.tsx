@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Warehouse, Truck, Fuel, Wrench } from "lucide-react";
+import { Warehouse, Truck, Fuel, Wrench, Zap } from "lucide-react";
 
 import storageImg from "@/assets/service-storage.jpg";
 import logisticsImg from "@/assets/service-logistics.jpg";
-import stationImg from "@/assets/service-station.jpg";
+import stationImg from "@/assets/service-station.png";
 import consultingImg from "@/assets/service-consulting.jpg";
+import consultingImg1 from "@/assets/service-station1.png";
 
 const services = [
   {
@@ -14,29 +15,36 @@ const services = [
     descKey: "detailed.storage.desc",
     ctaKey: "detailed.storage.cta",
     icon: Warehouse,
-    image: storageImg
+    image: storageImg,
   },
   {
     titleKey: "detailed.logistics.title",
     descKey: "detailed.logistics.desc",
     ctaKey: "detailed.logistics.cta",
     icon: Truck,
-    image: logisticsImg
+    image: logisticsImg,
   },
   {
     titleKey: "detailed.station.title",
     descKey: "detailed.station.desc",
     ctaKey: "detailed.station.cta",
     icon: Fuel,
-    image: stationImg
+    image: stationImg,
+  },
+  {
+    titleKey: "detailed.evStation.title",
+    descKey: "detailed.evStation.desc",
+    ctaKey: "detailed.evStation.cta",
+    icon: Zap,
+    image: consultingImg1, // يمكن استبدالها بصورة خاصة بمحطة الشحن الكهربائي
   },
   {
     titleKey: "detailed.consulting.title",
     descKey: "detailed.consulting.desc",
     ctaKey: "detailed.consulting.cta",
     icon: Wrench,
-    image: consultingImg
-  }
+    image: consultingImg,
+  },
 ];
 
 export const DetailedServicesSection = () => {
@@ -99,7 +107,7 @@ export const DetailedServicesSection = () => {
                         </p>
                       </div>
 
-                      {/* Decorative CTA (Non-clickable) */}
+                      {/* Decorative CTA */}
                       <div className="mt-6 flex items-center gap-3">
                         <div className="w-10 h-[2px] bg-royal-gold transition-all duration-300 group-hover:w-16" />
                         <span className="text-sm text-royal-gold font-medium tracking-wide">

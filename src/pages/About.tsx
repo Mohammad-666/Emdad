@@ -17,7 +17,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-main.jpg";
+import heroImage from "@/assets/hero-main.png";
 import { useLangLink } from "@/hooks/useLangLink";
 import { useNavigate } from "react-router-dom";
 // Timeline data

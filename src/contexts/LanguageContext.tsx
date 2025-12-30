@@ -68,6 +68,12 @@ const translations = {
     "detailed.consulting.desc":
       "Expert consulting solutions for oil & gas infrastructure development. Market analysis and identification of new investment opportunities in the petroleum sector. Training programs that develop qualified teams capable of managing critical petroleum facilities.",
     "detailed.consulting.cta": "Engineering expertise supporting informed investment decisions",
+    "detailed.evStation.title": "Electric Vehicle Charging Station",
+"detailed.evStation.desc":
+  "Petra Al-Abed Station provides electric vehicle charging services using high-efficiency chargers designed to meet daily charging needs with speed and reliability, offering competitive pricing aligned with the local market and 24/7 availability.",
+"detailed.evStation.cta":
+  "Practical charging solutions supporting confident electric mobility",
+
     "service.dropdown.storage": "Petroleum Products Storage",
     "service.dropdown.logistics": "Supply Chain Management",
     "service.dropdown.station": "Fuel Station Investment",
@@ -142,7 +148,7 @@ const translations = {
       "We adhere to strict international HSE standards, ensuring all operations comply with global regulations and industry best practices.",
     "faq.q3": "Where are your services available?",
     "faq.a3":
-      "Our services are available across Syria.",
+      "Our services are currently available in Damascus and its surrounding areas, with ongoing studies to expand coverage across all Syrian governorates.",
     "faq.q4": "How can I request a quote?",
     "faq.a4":
       "You can request a quote by filling out our contact form, calling our office directly, or sending us an email.",
@@ -459,6 +465,17 @@ const translations = {
       "Operational management based on high efficiency and profitability standards",
     "services.page.fuelStation.point3":
       "Development of alternative energy solutions such as solar power systems",
+"services.page.evStation.label": "Electric Vehicle Charging",
+"services.page.evStation.title": "Electric Vehicle Charging Station",
+"services.page.evStation.desc":
+  "Petra Al-Abed Station provides electric vehicle charging services using high-efficiency chargers, delivering fast and reliable performance with competitive pricing aligned with the local market.",
+
+"services.page.evStation.point1":
+  "High-efficiency chargers supporting fast and safe charging",
+"services.page.evStation.point2":
+  "24/7 operational readiness for electric vehicle users",
+"services.page.evStation.point3":
+  "Competitive pricing designed to match local market needs",
 
     "services.page.consulting.label": "Technical & Consulting Services",
     "services.page.consulting.title": "Professional Engineering & Consulting",
@@ -686,10 +703,17 @@ const translations = {
     "detailed.consulting.desc":
       "حلول استشارية متخصصة لتطوير البنية التحتية للنفط والغاز. تحليل السوق وتحديد فرص الاستثمار الجديدة.",
     "detailed.consulting.cta":" خبرات هندسية تدعم قرارات استثمارية دقيقة",
+    "detailed.evStation.title": "محطة شحن السيارات الكهربائية",
+"detailed.evStation.desc":
+  "توفر محطة بيترا العابد خدمة شحن السيارات الكهربائية باستخدام شواحن عالية الكفاءة والفعالية، لتلبية احتياجات الشحن اليومية بسرعة وأمان، وبأسعار تنافس الأسواق المحلية مع جاهزية تشغيل على مدار الساعة.",
+"detailed.evStation.cta":
+  "حلول شحن عملية تدعم التنقل الكهربائي بثقة",
+
     "service.dropdown.storage": "تخزين المنتجات البترولية",
     "service.dropdown.logistics": "إدارة سلسلة التوريد",
     "service.dropdown.station": "الاستثمار في محطات الوقود",
     "service.dropdown.consulting": "الاستشارات الفنية والهندسية",
+    
     "about.title": "من نحن",
     "about.description":
       "بيترا شركة متخصصة في إدارة وتخزين ولوجستيات المشتقات البترولية. نعمل وفق معايير رائدة في الصناعة لضمان حلول طاقة آمنة وموثوقة.",
@@ -742,7 +766,7 @@ const translations = {
     "faq.q2": "ما هي معايير السلامة التي تتبعونها؟",
     "faq.a2": "نلتزم بمعايير صارمة للصحة والسلامة والبيئة الدولية.",
     "faq.q3": "أين تتوفر خدماتكم؟",
-    "faq.a3": "خدماتنا متاحة في جميع أنحاء سوريا .",
+    "faq.a3": "خدماتنا متاحة في دمشق وريفها ويوجد دراسة على تخديم كافة المحافظات السورية   .",
     "faq.q4": "كيف يمكنني طلب عرض سعر؟",
     "faq.a4":
       "يمكنك طلب عرض سعر من خلال ملء نموذج الاتصال أو الاتصال بمكتبنا مباشرة.",
@@ -1049,6 +1073,17 @@ const translations = {
       "تشغيل وإدارة المحطات وفق معايير عالية للكفاءة والربحية",
     "services.page.fuelStation.point3":
       "تطوير حلول الطاقة البديلة مثل أنظمة الطاقة الشمسية",
+"services.page.evStation.label": "شحن السيارات الكهربائية",
+"services.page.evStation.title": "محطة شحن السيارات الكهربائية",
+"services.page.evStation.desc":
+  "توفر محطة بيترا العابد خدمة شحن السيارات الكهربائية باستخدام شواحن عالية الكفاءة والفعالية، مع سرعة في الأداء وأسعار تنافس السوق المحلي لتجربة شحن عملية وموثوقة.",
+
+"services.page.evStation.point1":
+  "شواحن كهربائية عالية الكفاءة تدعم الشحن السريع والآمن",
+"services.page.evStation.point2":
+  "جاهزية تشغيل على مدار الساعة لخدمة مستخدمي السيارات الكهربائية",
+"services.page.evStation.point3":
+  "أسعار مدروسة تنافس السوق المحلي وتناسب الاستخدام اليومي",
 
     "services.page.consulting.label": "الخدمات الفنية والاستشارية",
     "services.page.consulting.title": "استشارات هندسية متخصصة",

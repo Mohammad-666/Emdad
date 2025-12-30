@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLangLink } from "@/hooks/useLangLink";
 import { useNavigate } from "react-router-dom";
-import heroMain from "@/assets/hero-main.jpg";
+import heroMain from "@/assets/hero-main.png";
 import heroEngineers from "@/assets/hero-engineers.jpg";
 import heroSafety from "@/assets/hero-safety.jpg";
 import heroNetwork from "@/assets/hero-network.jpg";

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   ChevronRight,
+  ChevronLeft,
   ArrowLeft,
   ArrowRight,
   Building2,
@@ -12,7 +13,7 @@ import {
   Leaf,
   Activity,
 } from "lucide-react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLangLink } from "@/hooks/useLangLink";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -41,11 +42,11 @@ interface PanelItem {
 export const AboutPanel = ({ isOpen, onClose }: AboutPanelProps) => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
+  const langLink = useLangLink();
 
   const [level, setLevel] = useState<PanelLevel>("main");
   const isRTL = language === "ar";
   const BackIcon = isRTL ? ArrowRight : ArrowLeft;
-const langLink = useLangLink();
 
   /* =======================
      Lock body scroll
@@ -72,27 +73,26 @@ const langLink = useLangLink();
   };
 
   const mainItems: PanelItem[] = [
-  { key: "panel.about", icon: Building2, next: "about" },
-  { key: "panel.whyPetra", icon: Sparkles, path: langLink("/why-petra") },
-  { key: "panel.governance", icon: Shield, next: "governance" },
-  { key: "panel.sustainability", icon: Leaf, path: langLink("/sustainability") },
-];
+    { key: "panel.about", icon: Building2, next: "about" },
+    { key: "panel.whyPetra", icon: Sparkles, path: langLink("/why-petra") },
+    { key: "panel.governance", icon: Shield, next: "governance" },
+    { key: "panel.sustainability", icon: Leaf, path: langLink("/sustainability") },
+  ];
 
-const aboutItems: PanelItem[] = [
-  { key: "panel.about", icon: Building2, path: langLink("/about") },
-  { key: "panel.services", icon: Sparkles, path: langLink("/services") },
-  { key: "panel.safety", icon: Shield, path: langLink("/safety") },
-  { key: "panel.activities", icon: Activity, path: langLink("/activities") },
-];
+  const aboutItems: PanelItem[] = [
+    { key: "panel.about", icon: Building2, path: langLink("/about") },
+    { key: "panel.services", icon: Sparkles, path: langLink("/services") },
+    { key: "panel.safety", icon: Shield, path: langLink("/safety") },
+    { key: "panel.activities", icon: Activity, path: langLink("/activities") },
+  ];
 
-const governanceItems: PanelItem[] = [
-  { key: "panel.governance", icon: Shield, path: langLink("/governance") },
-  { key: "panel.ethics", icon: Shield, path: langLink("/ethics-governance") },
-  { key: "panel.values", icon: Leaf, path: langLink("/our-values") },
-];
+  const governanceItems: PanelItem[] = [
+    { key: "panel.governance", icon: Shield, path: langLink("/governance") },
+    { key: "panel.ethics", icon: Shield, path: langLink("/ethics-governance") },
+    { key: "panel.values", icon: Leaf, path: langLink("/our-values") },
+  ];
 
-
-  const getItems = (): PanelItem[] => {
+  const getItems = () => {
     switch (level) {
       case "about":
         return aboutItems;
@@ -124,7 +124,6 @@ const governanceItems: PanelItem[] = [
     <AnimatePresence>
       {/* Backdrop */}
       <motion.div
-        key="backdrop"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -137,7 +136,6 @@ const governanceItems: PanelItem[] = [
 
       {/* Panel */}
       <motion.aside
-        key="panel"
         initial={{ x: isRTL ? "100%" : "-100%" }}
         animate={{ x: 0 }}
         exit={{ x: isRTL ? "100%" : "-100%" }}
@@ -164,16 +162,15 @@ const governanceItems: PanelItem[] = [
           {/* Header */}
           <div className="mb-10">
             {level !== "main" && (
-              <button
-                onClick={() => setLevel("main")}
-                className="mb-4 flex items-center gap-2 text-white/70 hover:text-royal-gold"
-              >
+              <button className="mb-4 flex items-center gap-2 text-white/70 hover:text-royal-gold">
                 <BackIcon className="w-5 h-5" />
                 <span>{t("panel.back")}</span>
               </button>
             )}
 
-            <h2 className="text-3xl font-bold text-white mb-2">{getTitle()}</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">
+              {getTitle()}
+            </h2>
             <div className="h-1 w-16 bg-gradient-to-r from-royal-gold to-royal-gold/50 rounded-full" />
           </div>
 
@@ -184,32 +181,38 @@ const governanceItems: PanelItem[] = [
 
               return (
                 <motion.button
-                  key={item.key}
-                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.08 }}
-                  onClick={() => {
-                    if (item.next) setLevel(item.next);
-                    if (item.path) goTo(item.path);
-                  }}
-                  className="w-full flex items-center gap-4 p-5 rounded-xl bg-white/5 hover:bg-white/15 transition-all"
-                >
-                  <div className="p-3 rounded-lg bg-white/10">
-                    <Icon className="w-5 h-5 text-royal-gold" />
-                  </div>
+  key={item.key}
+  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ delay: index * 0.08 }}
+  onClick={() => {
+    if (item.next) setLevel(item.next);
+    if (item.path) goTo(item.path);
+  }}
+  className="w-full flex items-center p-5 rounded-xl
+    bg-white/5 hover:bg-white/15 transition-all"
+>
+  {/* ICON (أقصى اليمين) */}
+  <div className="p-3 rounded-lg bg-white/10 shrink-0">
+    <Icon className="w-5 h-5 text-royal-gold" />
+  </div>
 
-                  <span className="flex-1 text-lg text-white text-left">
-                    {t(item.key)}
-                  </span>
+  {/* TEXT */}
+  <span className="mr-4 text-lg text-white whitespace-nowrap">
+    {t(item.key)}
+  </span>
 
-                  {item.next && (
-                    <ChevronRight
-                      className={`w-5 h-5 text-white/40 ${
-                        isRTL ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </motion.button>
+  {/* ARROW (أقصى اليسار) */}
+  {item.next && (
+  isRTL ? (
+    <ChevronLeft className="w-5 h-5 text-white/40 mr-auto" />
+  ) : (
+    <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
+  )
+)}
+
+</motion.button>
+
               );
             })}
           </div>

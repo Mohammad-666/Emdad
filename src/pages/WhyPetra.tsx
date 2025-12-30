@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 // Image imports
-import industrialTanksSunset from "@/assets/industrial-tanks-sunset.jpg";
+import industrialTanksSunset from "@/assets/industrialTanksSunset.png";
 import controlRoom from "@/assets/control-room.jpg";
 import safetySystems from "@/assets/safety-systems.jpg";
 import tankerTrucks from "@/assets/tanker-trucks.jpg";

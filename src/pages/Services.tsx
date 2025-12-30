@@ -12,7 +12,8 @@ import {
 // Image imports
 import servicesHero from "@/assets/services-hero.jpg";
 import industrialTanksSunset from "@/assets/industrial-tanks-sunset.jpg";
-import fuelStationSolar from "@/assets/fuel-station-solar.jpg";
+import fuelStationSolar from "@/assets/service-station3.jpg";
+import fuelStationSolar1 from "@/assets/fuel-station-solar.jpg";
 import engineerInspection from "@/assets/engineer-inspection.jpg";
 import gpsTracking from "@/assets/gps-tracking.jpg";
 import tankerTrucks from "@/assets/tanker-trucks.jpg";
@@ -158,6 +159,9 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
 };
 
 // Main Services Section
+// ... كل الاستيرادات كما هي بدون تغيير
+
+// Main Services Section
 const MainServicesSection = ({ t, language }: { t: (key: string) => string; language: string }) => {
   const services = [
     {
@@ -177,6 +181,12 @@ const MainServicesSection = ({ t, language }: { t: (key: string) => string; lang
       icon: Fuel,
       image: fuelStationSolar,
       color: 'from-orange-500 to-amber-500',
+    },
+    {
+      key: 'evStation', // ✅ محطة شحن السيارات الكهربائية
+      icon: Zap,
+      image: fuelStationSolar1, // يمكن تغييرها لصورة خاصة بالشحن الكهربائي
+      color: 'from-emerald-500 to-lime-500',
     },
     {
       key: 'consulting',
@@ -210,7 +220,7 @@ const MainServicesSection = ({ t, language }: { t: (key: string) => string; lang
           {services.map((service, index) => {
             const Icon = service.icon;
             const isReversed = index % 2 === 1;
-            
+
             return (
               <motion.div
                 key={service.key}
@@ -229,62 +239,49 @@ const MainServicesSection = ({ t, language }: { t: (key: string) => string; lang
                     isReversed ? 'lg:col-start-2' : ''
                   }`}
                 >
-                  <LazyImage 
-                    src={service.image} 
+                  <LazyImage
+                    src={service.image}
                     alt={t(`services.page.${service.key}.title`)}
                     className="h-full"
                     parallaxOffset={15}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-20`} />
-                  
-                  {/* Service icon overlay */}
+
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg">
                     <Icon className="w-6 h-6 text-petroleum-green" />
                   </div>
-
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: ["-100%", "200%"] }}
-                    transition={{ duration: 3, repeat: Infinity, repeatDelay: 5 }}
-                  />
                 </motion.div>
 
                 {/* Content */}
                 <div className={`${isReversed ? 'lg:col-start-1' : ''} ${language === 'ar' ? 'text-right' : ''}`}>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
+                  <div
                     className={`inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${service.color} text-white rounded-full text-sm font-medium mb-4`}
                   >
                     <Icon className="w-4 h-4" />
                     {t(`services.page.${service.key}.label`)}
-                  </motion.div>
-                  
+                  </div>
+
                   <h3 className="text-2xl md:text-3xl font-bold text-petroleum-green mb-4">
                     {t(`services.page.${service.key}.title`)}
                   </h3>
-                  
+
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     {t(`services.page.${service.key}.desc`)}
                   </p>
 
-                  <ul className="space-y-3 mb-6">
+                  <ul className="space-y-3">
                     {[1, 2, 3].map((num) => (
-                      <motion.li
+                      <li
                         key={num}
-                        initial={{ opacity: 0, x: language === 'ar' ? 20 : -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: num * 0.1 }}
                         className={`flex items-center gap-3 ${language === 'ar' ? 'flex-row-reverse' : ''}`}
                       >
-                        <CheckCircle2 className="w-5 h-5 text-royal-gold flex-shrink-0" />
-                        <span className="text-foreground text-sm">
+                        <CheckCircle2 className="w-5 h-5 text-royal-gold" />
+                        <span className="text-sm">
                           {t(`services.page.${service.key}.point${num}`)}
                         </span>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
-
                 </div>
               </motion.div>
             );
@@ -294,6 +291,7 @@ const MainServicesSection = ({ t, language }: { t: (key: string) => string; lang
     </section>
   );
 };
+
 
 // Additional Services
 const AdditionalServicesSection = ({ t, language }: { t: (key: string) => string; language: string }) => {
