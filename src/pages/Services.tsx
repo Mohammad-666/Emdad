@@ -11,7 +11,7 @@ import {
 
 // Image imports
 import servicesHero from "@/assets/services-hero.jpg";
-import industrialTanksSunset from "@/assets/industrial-tanks-sunset.jpg";
+import industrialTanksSunset from "@/assets/industrial-tanks-sunset1.jpg";
 import fuelStationSolar from "@/assets/service-station3.jpg";
 import fuelStationSolar1 from "@/assets/fuel-station-solar.jpg";
 import engineerInspection from "@/assets/engineer-inspection.jpg";
