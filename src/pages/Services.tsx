@@ -12,7 +12,7 @@ import {
 // Image imports
 import servicesHero from "@/assets/services-hero.jpg";
 import industrialTanksSunset from "@/assets/industrial-tanks-sunset1.jpg";
-import fuelStationSolar from "@/assets/service-station3.jpg";
+import fuelStationSolar from "@/assets/service-station3.png";
 import fuelStationSolar1 from "@/assets/fuel-station-solar.jpg";
 import engineerInspection from "@/assets/engineer-inspection.jpg";
 import gpsTracking from "@/assets/gps-tracking.jpg";
@@ -88,19 +88,19 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
     target: ref,
     offset: ["start start", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section ref={ref} className="relative h-[85vh] min-h-[600px] overflow-hidden">
-      <motion.div 
+      <motion.div
         className="absolute inset-0"
         style={{ y }}
       >
-        <img 
-          src={servicesHero} 
-          alt="Petroleum services infrastructure" 
+        <img
+          src={servicesHero}
+          alt="Petroleum services infrastructure"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-petroleum-green/70 via-petroleum-green/50 to-petroleum-green/80" />
@@ -114,11 +114,17 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
         transition={{ duration: 5, repeat: Infinity, repeatDelay: 4 }}
       />
 
-      <motion.div 
+      <motion.div
         className="relative z-10 container mx-auto px-4 h-full flex items-center"
         style={{ opacity }}
       >
-        <div className={`max-w-4xl ${language === 'ar' ? 'text-right mr-auto' : 'text-left ml-0'}`}>
+        <div
+          className={`max-w-4xl ${
+            language === 'ar'
+              ? 'text-right ml-auto'
+              : 'text-left mr-auto'
+          }`}
+        >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -127,7 +133,7 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
           >
             {t('services.page.label')}
           </motion.span>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,7 +142,7 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
           >
             {t('services.page.hero.title')}
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -150,13 +156,18 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className={`h-1 bg-gradient-to-r from-royal-gold to-royal-gold/30 w-32 ${language === 'ar' ? 'origin-right mr-0 ml-auto' : 'origin-left'}`}
+            className={`h-1 bg-gradient-to-r from-royal-gold to-royal-gold/30 w-32 ${
+              language === 'ar'
+                ? 'origin-right ml-auto'
+                : 'origin-left'
+            }`}
           />
         </div>
       </motion.div>
     </section>
   );
 };
+
 
 // Main Services Section
 // ... كل الاستيرادات كما هي بدون تغيير

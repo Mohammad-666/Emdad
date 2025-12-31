@@ -78,6 +78,7 @@ const translations = {
     "service.dropdown.logistics": "Supply Chain Management",
     "service.dropdown.station": "Fuel Station Investment",
     "service.dropdown.consulting": "Technical & Engineering Consulting",
+    "service.dropdown.evStation": "Electric Vehicle Charging",
     "about.title": "Who We Are",
     "about.description":
       "Petra is a specialized company in the management, storage, and logistics of petroleum derivatives. We work with industry-leading standards to ensure safe, reliable, and efficient energy solutions that support national growth and business continuity.",
@@ -713,7 +714,8 @@ const translations = {
     "service.dropdown.logistics": "إدارة سلسلة التوريد",
     "service.dropdown.station": "الاستثمار في محطات الوقود",
     "service.dropdown.consulting": "الاستشارات الفنية والهندسية",
-    
+        "service.dropdown.evStation": "شحن السيارات الكهربائية",
+
     "about.title": "من نحن",
     "about.description":
       "بيترا شركة متخصصة في إدارة وتخزين ولوجستيات المشتقات البترولية. نعمل وفق معايير رائدة في الصناعة لضمان حلول طاقة آمنة وموثوقة.",

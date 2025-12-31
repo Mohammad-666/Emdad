@@ -83,19 +83,16 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
     target: ref,
     offset: ["start start", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section ref={ref} className="relative h-[85vh] min-h-[600px] overflow-hidden">
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y }}
-      >
-        <img 
-          src={activitiesHero} 
-          alt="Petroleum transport activities" 
+      <motion.div className="absolute inset-0" style={{ y }}>
+        <img
+          src={activitiesHero}
+          alt="Petroleum transport activities"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-petroleum-green/70 via-petroleum-green/50 to-petroleum-green/80" />
@@ -103,18 +100,23 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
 
       <FloatingParticles />
 
-      {/* Light sweep */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
         animate={{ x: ["-100%", "200%"] }}
         transition={{ duration: 5, repeat: Infinity, repeatDelay: 4 }}
       />
 
-      <motion.div 
+      <motion.div
         className="relative z-10 container mx-auto px-4 h-full flex items-center"
         style={{ opacity }}
       >
-        <div className={`max-w-4xl ${language === 'ar' ? 'text-right mr-auto' : 'text-left ml-0'}`}>
+        <div
+          className={`max-w-4xl ${
+            language === 'ar'
+              ? 'text-right ml-auto'
+              : 'text-left mr-auto'
+          }`}
+        >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +125,7 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
           >
             {t('activities.label')}
           </motion.span>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -132,7 +134,7 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
           >
             {t('activities.hero.title')}
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,12 +144,13 @@ const HeroSection = ({ t, language }: { t: (key: string) => string; language: st
             {t('activities.hero.subtitle')}
           </motion.p>
 
-          {/* Animated divider */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className={`h-1 bg-gradient-to-r from-royal-gold to-royal-gold/30 w-32 ${language === 'ar' ? 'origin-right mr-0 ml-auto' : 'origin-left'}`}
+            className={`h-1 bg-gradient-to-r from-royal-gold to-royal-gold/30 w-32 ${
+              language === 'ar' ? 'origin-right ml-auto' : 'origin-left'
+            }`}
           />
         </div>
       </motion.div>

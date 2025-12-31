@@ -26,6 +26,8 @@ export const Footer = () => {
     { key: "service.dropdown.logistics" },
     { key: "service.dropdown.station" },
     { key: "service.dropdown.consulting" },
+    { key: "service.dropdown.evStation" },
+
   ];
 
   // ✅ Scroll ذكي لقسم الخدمات

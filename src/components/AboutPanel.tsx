@@ -162,7 +162,10 @@ export const AboutPanel = ({ isOpen, onClose }: AboutPanelProps) => {
           {/* Header */}
           <div className="mb-10">
             {level !== "main" && (
-              <button className="mb-4 flex items-center gap-2 text-white/70 hover:text-royal-gold">
+              <button
+                onClick={() => setLevel("main")} // 👈 التعديل الوحيد
+                className="mb-4 flex items-center gap-2 text-white/70 hover:text-royal-gold"
+              >
                 <BackIcon className="w-5 h-5" />
                 <span>{t("panel.back")}</span>
               </button>
@@ -181,38 +184,35 @@ export const AboutPanel = ({ isOpen, onClose }: AboutPanelProps) => {
 
               return (
                 <motion.button
-  key={item.key}
-  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ delay: index * 0.08 }}
-  onClick={() => {
-    if (item.next) setLevel(item.next);
-    if (item.path) goTo(item.path);
-  }}
-  className="w-full flex items-center p-5 rounded-xl
-    bg-white/5 hover:bg-white/15 transition-all"
->
-  {/* ICON (أقصى اليمين) */}
-  <div className="p-3 rounded-lg bg-white/10 shrink-0">
-    <Icon className="w-5 h-5 text-royal-gold" />
-  </div>
+                  key={item.key}
+                  initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  onClick={() => {
+                    if (item.next) setLevel(item.next);
+                    if (item.path) goTo(item.path);
+                  }}
+                  className="w-full flex items-center p-5 rounded-xl
+                    bg-white/5 hover:bg-white/15 transition-all"
+                >
+                  {/* ICON */}
+                  <div className="p-3 rounded-lg bg-white/10 shrink-0">
+                    <Icon className="w-5 h-5 text-royal-gold" />
+                  </div>
 
-  {/* TEXT */}
-  <span className="mr-4 text-lg text-white whitespace-nowrap">
-    {t(item.key)}
-  </span>
+                  {/* TEXT */}
+                  <span className="mr-4 text-lg text-white whitespace-nowrap">
+                    {t(item.key)}
+                  </span>
 
-  {/* ARROW (أقصى اليسار) */}
-  {item.next && (
-  isRTL ? (
-    <ChevronLeft className="w-5 h-5 text-white/40 mr-auto" />
-  ) : (
-    <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
-  )
-)}
-
-</motion.button>
-
+                  {/* ARROW */}
+                  {item.next &&
+                    (isRTL ? (
+                      <ChevronLeft className="w-5 h-5 text-white/40 mr-auto" />
+                    ) : (
+                      <ChevronRight className="w-5 h-5 text-white/40 ml-auto" />
+                    ))}
+                </motion.button>
               );
             })}
           </div>
