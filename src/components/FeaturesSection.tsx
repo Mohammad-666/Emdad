@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -77,7 +78,8 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
       <div className="relative h-64 overflow-hidden">
         <img
           src={feature.image}
-          alt={t(feature.titleKey)}
+            alt={t(feature.titleKey)}
+            loading="lazy"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -91,12 +93,22 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
         <p className="text-muted-foreground mb-6 leading-relaxed">
           {t(feature.textKey)}
         </p>
-        <Button
-          variant="outline"
-          className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
-        >
-          {t(feature.buttonKey)}
-        </Button>
+        {feature.id === 1 ? (
+          <Button
+            asChild
+            variant="outline"
+            className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+          >
+            <Link to="/no-worries">{t(feature.buttonKey)}</Link>
+          </Button>
+        ) : (
+          <Button
+            variant="outline"
+            className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+          >
+            {t(feature.buttonKey)}
+          </Button>
+        )}
       </div>
     </Card>
   );

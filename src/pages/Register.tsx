@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, UserPlus, Eye, EyeOff } from 'lucide-react';
+import { API_BASE_URL } from '@/config/api';
+
 
 const Register = () => {
   const { t, language } = useLanguage();
@@ -13,40 +16,37 @@ const Register = () => {
   const isRTL = language === 'ar';
 
   const [formData, setFormData] = useState({
-    fullName: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
+    first_name: '',
+    last_name: '',
+    phone: '',
+    // Role removed from state, hardcoded in submission
   });
 
-  const [errors, setErrors] = useState({
-    fullName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const newErrors = {
-      fullName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    };
+    const newErrors: Record<string, string> = {};
 
-    if (!formData.fullName.trim()) {
-      newErrors.fullName = t('auth.errors.fullNameRequired');
-    }
+    if (!formData.username.trim()) newErrors.username = 'Username is required';
+    if (!formData.first_name.trim()) newErrors.first_name = 'First name is required';
+    if (!formData.last_name.trim()) newErrors.last_name = 'Last name is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
 
     if (!formData.email) {
       newErrors.email = t('auth.errors.emailRequired');
@@ -68,16 +68,62 @@ const Register = () => {
 
     setErrors(newErrors);
 
-    if (!newErrors.fullName && !newErrors.email && !newErrors.password && !newErrors.confirmPassword) {
-      console.log('Register form submitted:', formData);
+    if (Object.keys(newErrors).length === 0) {
+      try {
+        await axios.post(`${API_BASE_URL}/api/users/`, {
+            username: formData.username,
+            email: formData.email,
+            password: formData.password,
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            phone: formData.phone,
+            role: 'customer', // Hardcoded role
+        });
+        
+        // Navigate to login on success
+        navigate('/login');
+      } catch (error: any) {
+        if (axios.isAxiosError(error) && error.response) {
+            if (error.response.status === 400) {
+                // Map backend errors to form errors
+                const backendErrors: Record<string, string> = {};
+                const data = error.response.data;
+                
+                // Handle various potential error formats from DRF
+                for (const key in data) {
+                    if (Array.isArray(data[key])) {
+                        backendErrors[key] = data[key][0];
+                    } else if (typeof data[key] === 'string') {
+                         backendErrors[key] = data[key];
+                    }
+                }
+                setErrors(backendErrors);
+            } else {
+                 setErrors({ form: 'Registration failed. Please try again.' });
+            }
+        } else {
+             setErrors({ form: 'An unexpected error occurred.' });
+        }
+      }
     }
+    
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    setErrors(prev => ({ ...prev, [name]: '' }));
+    // Clear error for this field when user types
+    if (errors[name]) {
+        setErrors(prev => {
+            const newErrors = { ...prev };
+            delete newErrors[name];
+            return newErrors;
+        });
+    }
   };
+  
+
 
   return (
     <div className="min-h-screen flex" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -104,8 +150,8 @@ const Register = () => {
         </div>
       </div>
 
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-background">
-        <Card className="w-full max-w-md border-border/50 shadow-elegant">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-background overflow-y-auto">
+        <Card className="w-full max-w-md border-border/50 shadow-elegant my-8">
           <CardHeader className="space-y-4 text-center">
             <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
               <UserPlus className="w-8 h-8 text-primary" />
@@ -119,25 +165,71 @@ const Register = () => {
           </CardHeader>
 
           <CardContent>
+            {errors.form && (
+                <div className="bg-red-50 text-red-500 p-3 rounded-md mb-4 text-center text-sm border border-red-200">
+                    {errors.form}
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-5">
+              
+              {/* Username */}
               <div className="space-y-2">
-                <Label htmlFor="fullName" className="text-foreground font-medium">
-                  {t('auth.register.fullNameLabel')}
+                <Label htmlFor="username" className="text-foreground font-medium">
+                  Username
                 </Label>
                 <Input
-                  id="fullName"
-                  name="fullName"
+                  id="username"
+                  name="username"
                   type="text"
-                  placeholder={t('auth.register.fullNamePlaceholder')}
-                  value={formData.fullName}
+                  placeholder="Choose a username"
+                  value={formData.username}
                   onChange={handleChange}
-                  className={`h-12 ${errors.fullName ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                  className={`h-12 ${errors.username ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                 />
-                {errors.fullName && (
-                  <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.fullName}</p>
+                {errors.username && (
+                  <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.username}</p>
                 )}
               </div>
 
+               {/* First Name & Last Name */}
+               <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="first_name" className="text-foreground font-medium">
+                      First Name
+                    </Label>
+                    <Input
+                      id="first_name"
+                      name="first_name"
+                      type="text"
+                      placeholder="John"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      className={`h-12 ${errors.first_name ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                    />
+                    {errors.first_name && (
+                      <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.first_name}</p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="last_name" className="text-foreground font-medium">
+                      Last Name
+                    </Label>
+                    <Input
+                      id="last_name"
+                      name="last_name"
+                      type="text"
+                      placeholder="Doe"
+                      value={formData.last_name}
+                      onChange={handleChange}
+                      className={`h-12 ${errors.last_name ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                    />
+                    {errors.last_name && (
+                      <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.last_name}</p>
+                    )}
+                  </div>
+               </div>
+
+              {/* Email */}
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-foreground font-medium">
                   {t('auth.register.emailLabel')}
@@ -156,6 +248,28 @@ const Register = () => {
                 )}
               </div>
 
+              {/* Phone */}
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-foreground font-medium">
+                  Phone
+                </Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`h-12 ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                />
+                {errors.phone && (
+                  <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.phone}</p>
+                )}
+              </div>
+
+
+
+              {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-foreground font-medium">
                   {t('auth.register.passwordLabel')}
@@ -183,6 +297,7 @@ const Register = () => {
                 )}
               </div>
 
+              {/* Confirm Password */}
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword" className="text-foreground font-medium">
                   {t('auth.register.confirmPasswordLabel')}
@@ -212,10 +327,11 @@ const Register = () => {
 
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-medium text-lg shadow-card hover:shadow-glow transition-all duration-300"
               >
-                {t('auth.register.submitButton')}
-                <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+                {isSubmitting ? 'Registering...' : t('auth.register.submitButton')}
+                {!isSubmitting && <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />}
               </Button>
             </form>
 

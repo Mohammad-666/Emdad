@@ -1,38 +1,39 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, KeyRound, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, KeyRound } from 'lucide-react';
 import { API_BASE_URL } from '@/config/api';
 
-const ForgotPassword = () => {
+const VerifyOtp = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   const isRTL = language === 'ar';
 
-  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Get email from previous page
+  const email = location.state?.email;
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  useEffect(() => {
+    if (!email) {
+        // If no email, redirect back to forgot password
+        navigate('/forgot-password');
+    }
+  }, [email, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email) {
-      setError(t('auth.errors.emailRequired'));
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      setError(t('auth.errors.emailInvalid'));
+    if (!otp) {
+      setError(t('auth.verifyOtp.errorRequired'));
       return;
     }
 
@@ -40,39 +41,38 @@ const ForgotPassword = () => {
     setError('');
 
     try {
-      await axios.post(`${API_BASE_URL}/api/auth/password-reset/`, { email });
-      // Navigate to OTP verification page
-      navigate('/verify-otp', { state: { email } });
+      const response = await axios.post(`${API_BASE_URL}/api/auth/password-reset/verify/`, { 
+        email, 
+        code: otp 
+      });
+      
+      const { reset_token } = response.data;
+
+      // Navigate to Reset Password page with reset_token
+      navigate('/reset-password', { state: { reset_token } });
     } catch (err: any) {
       if (axios.isAxiosError(err) && err.response) {
-        if (err.response.status === 400 && err.response.data.email) {
-           // Handle specific email error from backend (Array or String)
-           const emailError = Array.isArray(err.response.data.email) 
-             ? err.response.data.email[0] 
-             : err.response.data.email;
-           setError(emailError);
+        if (err.response.status === 400) {
+           setError(t('auth.verifyOtp.errorInvalid'));
         } else {
-           setError('Failed to send reset email. Please try again.');
+           setError(t('auth.verifyOtp.errorFailed'));
         }
       } else {
-         setError('An unexpected error occurred.');
+         setError(t('auth.errors.unexpected'));
       }
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setError('');
-  };
+  if (!email) return null;
 
   return (
     <div className="min-h-screen flex" dir={isRTL ? 'rtl' : 'ltr'}>
       <div
         className="hidden lg:flex lg:w-1/2 relative bg-cover bg-center"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?q=80&w=2070)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1574634534894-89d7576c8259?q=80&w=2070)',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-[#00796B]/85" />
@@ -84,10 +84,10 @@ const ForgotPassword = () => {
             </div>
           </Link>
           <h1 className="text-5xl font-bold mb-6 leading-tight">
-            {t('auth.forgotPassword.heroTitle')}
+            {t('auth.verifyOtp.heroTitle')}
           </h1>
           <p className="text-xl leading-relaxed text-white/90">
-            {t('auth.forgotPassword.heroSubtitle')}
+             {t('auth.verifyOtp.heroSubtitle')}
           </p>
         </div>
       </div>
@@ -99,27 +99,27 @@ const ForgotPassword = () => {
               <KeyRound className="w-8 h-8 text-primary" />
             </div>
             <CardTitle className="text-3xl font-bold text-foreground">
-              {t('auth.forgotPassword.title')}
+              {t('auth.verifyOtp.title')}
             </CardTitle>
             <CardDescription className="text-lg text-muted-foreground">
-              {t('auth.forgotPassword.subtitle')}
+              {t('auth.verifyOtp.subtitle')}
             </CardDescription>
           </CardHeader>
 
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground font-medium">
-                  {t('auth.forgotPassword.emailLabel')}
+                <Label htmlFor="otp" className="text-foreground font-medium">
+                  {t('auth.verifyOtp.otpLabel')}
                 </Label>
                 <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder={t('auth.forgotPassword.emailPlaceholder')}
-                  value={email}
-                  onChange={handleChange}
-                  className={`h-12 ${error ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                  id="otp"
+                  name="otp"
+                  type="text"
+                  placeholder={t('auth.verifyOtp.otpPlaceholder')}
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  className={`h-12 text-center text-lg tracking-widest ${error ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                 />
                 {error && (
                   <p className="text-sm text-red-500 mt-1 animate-fade-in">{error}</p>
@@ -131,25 +131,17 @@ const ForgotPassword = () => {
                 disabled={isSubmitting}
                 className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-medium text-lg shadow-card hover:shadow-glow transition-all duration-300"
               >
-                {isSubmitting ? 'Sending...' : t('auth.forgotPassword.submitButton')}
+                {isSubmitting ? t('auth.verifyOtp.submitting') : t('auth.verifyOtp.submitButton')}
                 {!isSubmitting && <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />}
               </Button>
             </form>
 
             <div className="mt-8 text-center">
               <Link
-                to="/login"
+                to="/forgot-password"
                 className="text-primary font-semibold hover:text-primary/80 transition-colors"
               >
-                {t('auth.forgotPassword.backToLogin')}
-              </Link>
-            </div>
-
-            <div className="mt-6 text-center">
-              <Link to="/">
-                <Button variant="ghost" className="text-muted-foreground hover:text-foreground">
-                  {t('auth.forgotPassword.backToHome')}
-                </Button>
+                {t('auth.verifyOtp.backToForgotPassword')}
               </Link>
             </div>
           </CardContent>
@@ -159,4 +151,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default VerifyOtp;

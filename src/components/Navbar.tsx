@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import logo from '@/assets/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,6 +77,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 rtl:space-x-reverse">
+            <img src={logo} alt="MoveLine" className="h-10 w-auto object-contain" />
             <div className="text-2xl font-bold">
               <span className="text-primary">Move</span>
               <span className={isScrolled ? 'text-foreground' : 'text-white'}>Line</span>

@@ -56,6 +56,79 @@ const translations = {
     'feature4.title': 'Storage Service',
     'feature4.text': 'We offer short- and long-term storage solutions in secure, well-equipped facilities.',
     'feature4.button': 'Learn More',
+    // No Worries page
+    'noworries.hero.title': 'A Trusted Moving Company Offering Complete Services',
+    'noworries.hero.subtitle': 'Rely on Move Line as a trusted moving company providing complete, worry-free moving services. Request a quote to discover how our full-service moving solution can make a real difference in your relocation experience.',
+    'noworries.hero.cta': 'Get a Quote',
+
+    'noworries.whatsIncluded.label': 'Full-Service Moving',
+    'noworries.whatsIncluded.h2': 'What Does Full-Service Moving Include?',
+    'noworries.whatsIncluded.p1': 'Full-service moving means we handle all the heavy work from start to finish. This option is ideal for customers who prefer not to deal with the physical tasks involved in moving, such as packing, unpacking, loading, unloading, and driving the moving truck.',
+    'noworries.whatsIncluded.p2': 'Whether you are relocating to a nearby city or a different region, Move Line offers full-service moving solutions designed to save you time, effort, and unnecessary stress. Let us take care of the time-consuming details while you focus on your daily responsibilities.',
+
+    'noworries.included.title': "What's Included in Your Full-Service Quote",
+    'noworries.included.item1': 'Your personal move coordinator',
+    'noworries.included.item2': 'Loading, transportation, and unloading of household belongings',
+    'noworries.included.item3': 'Full value protection (unless waived)',
+    'noworries.included.item4': 'Standard appliance transportation (no disconnection or reconnection)',
+    'noworries.included.item5': 'Standard furniture placement',
+    'noworries.included.item6': 'Qualified drivers and professional moving equipment',
+
+    'noworries.services.label': 'Choose Your Services',
+    'noworries.services.h2': 'Move Line® Full-Service Moving Options',
+    'noworries.services.s1.title': 'Packing & Unpacking Services',
+    'noworries.services.s1.description': 'Professional assistance to carefully pack your home and unpack everything at your new location',
+    'noworries.services.s2.title': 'Storage Services During Your Move',
+    'noworries.services.s2.description': 'Secure short-term and long-term storage options at any stage of your relocation',
+    'noworries.services.s3.title': 'Vehicle Shipping Services',
+    'noworries.services.s3.description': 'Door-to-door transportation for cars, trucks, and motorcycles',
+    'noworries.services.s4.title': 'Debris Removal',
+    'noworries.services.s4.description': 'We can return within 30 days after delivery to collect empty boxes and packing material waste',
+
+    'noworries.icons.packing': 'Packing',
+    'noworries.icons.unpacking': 'Unpacking',
+    'noworries.icons.debris': 'Debris Removal',
+    'noworries.icons.storage': 'Storage',
+    'noworries.icons.vehicle': 'Vehicle Shipping',
+    'noworries.icons.special': 'Special Items',
+    'noworries.icons.materials': 'Packing Materials',
+    'noworries.icons.electronics': 'Electronics Installation',
+
+    'noworries.additional.label': 'Additional Moving Services',
+    'noworries.additional.h2': 'Let Move Line Handle All Your Moving Needs',
+    'noworries.additional.p': 'In addition to our full-service moving solutions, Move Line offers specialized packing services for fragile or high-value items, as well as professional packing and installation of electronic equipment.',
+
+    'noworries.protection.title': 'Comprehensive Protection Options',
+    'noworries.protection.p': 'Ask about additional liability and protection options to better understand your rights in case of unexpected damage during your move.',
+    'noworries.protection.button': 'Tell Me More About These Services',
+
+    'noworries.locations.label': 'Nationwide Coverage',
+    'noworries.locations.h2': 'Full-Service Moving Companies Near You',
+    'noworries.locations.p1': 'Move Line provides comprehensive long-distance moving services through our network of trusted partners across multiple cities and regions. With availability in many locations and reliable local agents, we ensure consistent quality no matter where you\'re moving.',
+    'noworries.locations.p2': 'Our extensive network means you get the same professional service whether you\'re relocating across town or across the country.',
+
+    // Cities (English)
+    'noworries.cities.damascus': 'Damascus',
+    'noworries.cities.homs': 'Homs',
+    'noworries.cities.hama': 'Hama',
+    'noworries.cities.aleppo': 'Aleppo',
+    'noworries.cities.rural_damascus': 'Rural Damascus',
+    'noworries.cities.lattakia': 'Lattakia',
+
+    'noworries.resources.free': 'Free Resources',
+    'noworries.resources.tipsLabel': 'Tips & Guides',
+    'noworries.resources.label': 'Moving Resources',
+    'noworries.resources.h2': 'Plan Your Move With Confidence',
+    'noworries.resources.p': 'Move Line is committed to creating a stress-free moving experience at every stage. Access helpful moving tips through simple checklists, how-to articles, and short, engaging videos designed to make your relocation smoother.',
+
+    'noworries.tips.weekly': 'Weekly planning guides',
+    'noworries.tips.video': 'How-to videos',
+    'noworries.tips.checklist': 'Packing checklists',
+    'noworries.tips.viewAll': 'View All Moving Tips',
+
+    'noworries.final.title': "Let Move Line Take Care of Your Move — So You Don't Have To",
+    'noworries.final.p': 'From packing to delivery, we handle every detail so you can move with confidence and peace of mind.',
+    'noworries.final.cta': 'Get a Quote Today',
     
     // Services Section
     'services.title': 'Our Services — Complete Solutions for All Your Moving Needs',
@@ -569,6 +642,20 @@ const translations = {
     'auth.resetPassword.backToLogin': 'Back to Login',
     'auth.resetPassword.backToHome': 'Back to Home',
 
+    // Authentication - Verify OTP
+    'auth.verifyOtp.heroTitle': 'Verification',
+    'auth.verifyOtp.heroSubtitle': 'Please enter the verification code sent to your email.',
+    'auth.verifyOtp.title': 'Verify OTP',
+    'auth.verifyOtp.subtitle': 'Enter the code sent to your email',
+    'auth.verifyOtp.otpLabel': 'Verification Code',
+    'auth.verifyOtp.otpPlaceholder': 'Enter code',
+    'auth.verifyOtp.submitButton': 'Verify Code',
+    'auth.verifyOtp.submitting': 'Verifying...',
+    'auth.verifyOtp.backToForgotPassword': 'Back to Forgot Password',
+    'auth.verifyOtp.errorRequired': 'Please enter the verification code.',
+    'auth.verifyOtp.errorInvalid': 'Invalid or expired verification code.',
+    'auth.verifyOtp.errorFailed': 'Verification failed. Please try again.',
+
     // Authentication - Errors
     'auth.errors.emailRequired': 'Email is required',
     'auth.errors.emailInvalid': 'Please enter a valid email address',
@@ -624,6 +711,79 @@ const translations = {
     'feature4.title': 'خدمة التخزين',
     'feature4.text': 'نوفر حلول تخزين قصيرة وطويلة الأجل في مرافق آمنة ومجهزة بشكل جيد.',
     'feature4.button': 'اعرف المزيد',
+    // صفحة لا تقلق - نصوص عربية
+    'noworries.hero.title': 'شركة نقل موثوقة تقدم خدمات متكاملة',
+    'noworries.hero.subtitle': 'اعتمد على موف لاين كشركة نقل موثوقة تقدّم خدمات كاملة وخالية من القلق. اطلب عرض سعر لمعرفة كيف يمكن لخدمة النقل الشاملة لدينا أن تيسر انتقالك.',
+    'noworries.hero.cta': 'احصل على عرض سعر',
+
+    'noworries.whatsIncluded.label': 'نقل شامل',
+    'noworries.whatsIncluded.h2': 'ماذا يشمل النقل الشامل؟',
+    'noworries.whatsIncluded.p1': 'النقل الشامل يعني أننا نتولى كل العمل الشاق من البداية إلى النهاية. هذا الخيار مثالي للعملاء الذين لا يرغبون بالتعامل مع المهام البدنية المتعلقة بالنقل مثل التعبئة، التفريغ، التحميل، والتنقل.',
+    'noworries.whatsIncluded.p2': 'سواء كنت تنتقل داخل المدينة أو إلى منطقة مختلفة، تقدّم موف لاين حلول نقل شاملة مصممة لتوفير الوقت والجهد وتقليل الضغوط. دعنا نتولى التفاصيل بينما تركز على مهامك اليومية.',
+
+    'noworries.included.title': 'ما الذي يتضمنه عرض الخدمة الشاملة',
+    'noworries.included.item1': 'منسق نقل شخصي',
+    'noworries.included.item2': 'تحميل ونقل وتفريغ محتويات المنزل',
+    'noworries.included.item3': 'حماية كامل القيمة (ما لم يتم التنازل عنها)',
+    'noworries.included.item4': 'نقل الأجهزة القياسي (بدون فصل أو إعادة توصيل)',
+    'noworries.included.item5': 'ترتيب الأثاث القياسي',
+    'noworries.included.item6': 'سائقون مؤهلون ومعدات نقل احترافية',
+
+    'noworries.services.label': 'اختر خدمتك',
+    'noworries.services.h2': 'خيارات النقل الشامل من موف لاين®',
+    'noworries.services.s1.title': 'خدمات التعبئة وفك التعبئة',
+    'noworries.services.s1.description': 'مساعدة محترفة لتعبئة منزلك بعناية وفك التعبئة في موقعك الجديد',
+    'noworries.services.s2.title': 'خدمات التخزين أثناء الانتقال',
+    'noworries.services.s2.description': 'حلول تخزين قصيرة وطويلة الأمد في أي مرحلة من مراحل نقلك',
+    'noworries.services.s3.title': 'خدمات شحن المركبات',
+    'noworries.services.s3.description': 'نقل من الباب إلى الباب للسيارات والشاحنات والدراجات النارية',
+    'noworries.services.s4.title': 'إزالة النفايات ومواد التغليف',
+    'noworries.services.s4.description': 'نستطيع العودة خلال 30 يوماً بعد التسليم لجمع الصناديق الفارغة ومخلفات التغليف',
+
+    'noworries.icons.packing': 'التعبئة',
+    'noworries.icons.unpacking': 'فك التعبئة',
+    'noworries.icons.debris': 'إزالة النفايات',
+    'noworries.icons.storage': 'التخزين',
+    'noworries.icons.vehicle': 'شحن المركبات',
+    'noworries.icons.special': 'عناصر خاصة',
+    'noworries.icons.materials': 'مواد التعبئة',
+    'noworries.icons.electronics': 'تركيب إلكترونيات',
+
+    'noworries.additional.label': 'خدمات إضافية',
+    'noworries.additional.h2': 'دع موف لاين يتولى جميع احتياجات نقلك',
+    'noworries.additional.p': 'بالإضافة إلى حلول النقل الشاملة، تقدّم موف لاين خدمات تعبئة متخصصة للعناصر الهشة أو عالية القيمة، بالإضافة إلى خدمات تعبئة وتركيب احترافية للأجهزة الإلكترونية.',
+
+    'noworries.protection.title': 'خيارات الحماية الشاملة',
+    'noworries.protection.p': 'اسأل عن خيارات المسئولية والحماية الإضافية لفهم حقوقك في حالة حدوث ضرر غير متوقع أثناء نقلك.',
+    'noworries.protection.button': 'أخبرني المزيد عن هذه الخدمات',
+
+    'noworries.locations.label': 'تغطية على مستوى البلاد',
+    'noworries.locations.h2': 'شركات نقل خدمات كاملة بالقرب منك',
+    'noworries.locations.p1': 'تقدّم موف لاين خدمات نقل لمسافات طويلة من خلال شبكة شركاء موثوقة عبر مدن ومناطق عديدة. مع توفرنا في مواقع متعددة ووكلاء محليين موثوقين، نضمن جودة متسقة أينما كنت.',
+    'noworries.locations.p2': 'شبكتنا الواسعة تضمن حصولك على نفس مستوى الخدمة المحترفة سواء كنت تنتقل داخل المدينة أو عبر البلاد.',
+
+    // أسماء المدن (عربي)
+    'noworries.cities.damascus': 'دمشق',
+    'noworries.cities.homs': 'حمص',
+    'noworries.cities.hama': 'حماة',
+    'noworries.cities.aleppo': 'حلب',
+    'noworries.cities.rural_damascus': 'ريف دمشق',
+    'noworries.cities.lattakia': 'اللاذقية',
+
+    'noworries.resources.free': 'موارد مجانية',
+    'noworries.resources.tipsLabel': 'نصائح وأدلة',
+    'noworries.resources.label': 'موارد النقل',
+    'noworries.resources.h2': 'خطط نقلك بثقة',
+    'noworries.resources.p': 'موف لاين ملتزمة بتقديم تجربة نقل خالية من الإجهاد في كل مرحلة. احصل على نصائح مفيدة عبر قوائم فحص بسيطة ومقالات تعليمية ومقاطع فيديو قصيرة تساعدك في تسهيل نقلك.',
+
+    'noworries.tips.weekly': 'أدلة التخطيط الأسبوعية',
+    'noworries.tips.video': 'فيديوهات تعليمية',
+    'noworries.tips.checklist': 'قوائم فحص التعبئة',
+    'noworries.tips.viewAll': 'عرض كل النصائح',
+
+    'noworries.final.title': 'دع موف لاين يتولى نقلك — لتكن مرتاح البال',
+    'noworries.final.p': 'من التعبئة حتى التسليم، نحن نتولى كل التفاصيل حتى تنتقل بثقة وراحة بال.',
+    'noworries.final.cta': 'احصل على عرض سعر اليوم',
     
     // Services Section
     'services.title': 'خدماتنا — حلول شاملة لجميع احتياجات النقل الخاصة بك',
@@ -1136,6 +1296,20 @@ const translations = {
     'auth.resetPassword.submitButton': 'إعادة تعيين كلمة المرور',
     'auth.resetPassword.backToLogin': 'العودة لتسجيل الدخول',
     'auth.resetPassword.backToHome': 'العودة للرئيسية',
+
+    // Authentication - Verify OTP
+    'auth.verifyOtp.heroTitle': 'التحقق',
+    'auth.verifyOtp.heroSubtitle': 'يرجى إدخال رمز التحقق المرسل إلى بريدك الإلكتروني.',
+    'auth.verifyOtp.title': 'التحقق من الرمز',
+    'auth.verifyOtp.subtitle': 'أدخل الرمز المرسل إلى بريدك الإلكتروني',
+    'auth.verifyOtp.otpLabel': 'رمز التحقق',
+    'auth.verifyOtp.otpPlaceholder': 'أدخل الرمز',
+    'auth.verifyOtp.submitButton': 'تحقق من الرمز',
+    'auth.verifyOtp.submitting': 'جارٍ التحقق...',
+    'auth.verifyOtp.backToForgotPassword': 'العودة لنسيت كلمة المرور',
+    'auth.verifyOtp.errorRequired': 'يرجى إدخال رمز التحقق.',
+    'auth.verifyOtp.errorInvalid': 'رمز التحقق غير صالح أو منتهي الصلاحية.',
+    'auth.verifyOtp.errorFailed': 'فشل التحقق. يرجى المحاولة مرة أخرى.',
 
     // Authentication - Errors
     'auth.errors.emailRequired': 'البريد الإلكتروني مطلوب',

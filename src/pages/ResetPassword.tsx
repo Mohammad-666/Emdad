@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Lock, Eye, EyeOff } from 'lucide-react';
+import { API_BASE_URL } from '@/config/api';
 
 const ResetPassword = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
   const isRTL = language === 'ar';
 
   const [formData, setFormData] = useState({
@@ -17,21 +20,25 @@ const ResetPassword = () => {
     confirmPassword: '',
   });
 
-  const [errors, setErrors] = useState({
-    password: '',
-    confirmPassword: '',
-  });
-
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Get reset_token from previous page
+  const { reset_token } = location.state || {};
+
+  useEffect(() => {
+    if (!reset_token) {
+        // If missing token, redirect to forgot password
+        navigate('/forgot-password');
+    }
+  }, [reset_token, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newErrors = {
-      password: '',
-      confirmPassword: '',
-    };
+    const newErrors: Record<string, string> = {};
 
     if (!formData.password) {
       newErrors.password = t('auth.errors.passwordRequired');
@@ -47,17 +54,56 @@ const ResetPassword = () => {
 
     setErrors(newErrors);
 
-    if (!newErrors.password && !newErrors.confirmPassword) {
-      console.log('Password reset submitted:', formData);
-      navigate('/login');
+    if (Object.keys(newErrors).length === 0) {
+      setIsSubmitting(true);
+      try {
+        await axios.post(`${API_BASE_URL}/api/auth/password-reset/complete/`, {
+            token: reset_token,
+            new_password: formData.password,
+        });
+        
+        // Success! Redirect to login
+        // Optional: Show a toast or success message before redirecting
+        navigate('/login');
+      } catch (err: any) {
+         if (axios.isAxiosError(err) && err.response) {
+            if (err.response.status === 400) {
+                // Map backend errors
+                const backendErrors: Record<string, string> = {};
+                const data = err.response.data;
+                 for (const key in data) {
+                    if (Array.isArray(data[key])) {
+                        backendErrors[key] = data[key][0];
+                    } else if (typeof data[key] === 'string') {
+                         backendErrors[key] = data[key];
+                    }
+                }
+                setErrors(backendErrors);
+            } else {
+                 setErrors({ form: 'Password reset failed. Please try again.' });
+            }
+        } else {
+             setErrors({ form: 'An unexpected error occurred.' });
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    setErrors(prev => ({ ...prev, [name]: '' }));
+    if (errors[name]) {
+         setErrors(prev => {
+            const newErrors = { ...prev };
+            delete newErrors[name];
+            return newErrors;
+        });
+    }
   };
+
+  if (!reset_token) return null;
 
   return (
     <div className="min-h-screen flex" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -156,10 +202,11 @@ const ResetPassword = () => {
 
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-medium text-lg shadow-card hover:shadow-glow transition-all duration-300"
               >
-                {t('auth.resetPassword.submitButton')}
-                <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+                {isSubmitting ? 'Resetting...' : t('auth.resetPassword.submitButton')}
+                {!isSubmitting && <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2' : 'ml-2'}`} />}
               </Button>
             </form>
 

@@ -2,6 +2,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -12,6 +13,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* About Section */}
           <div className="space-y-4">
+            <img src={logo} alt="MoveLine" className="h-12 w-auto mb-4 object-contain bg-white/10 rounded-lg p-1" />
             <h3 className="text-xl font-bold text-white mb-6">
               {t('footer.about.title')}
             </h3>

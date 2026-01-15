@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,40 +8,35 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, LogIn, Eye, EyeOff } from 'lucide-react';
 
+import { API_BASE_URL } from '@/config/api';
+
 const Login = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const isRTL = language === 'ar';
 
   const [formData, setFormData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
   const [errors, setErrors] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newErrors = {
-      email: '',
+      username: '',
       password: '',
     };
 
-    if (!formData.email) {
-      newErrors.email = t('auth.errors.emailRequired');
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = t('auth.errors.emailInvalid');
+    if (!formData.username) {
+      newErrors.username = t('auth.errors.emailRequired') || 'Username is required';
     }
 
     if (!formData.password) {
@@ -49,8 +45,26 @@ const Login = () => {
 
     setErrors(newErrors);
 
-    if (!newErrors.email && !newErrors.password) {
-      console.log('Login form submitted:', formData);
+    if (newErrors.username || newErrors.password) return;
+
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/api/auth/token/`,
+        {
+          username: formData.username,
+          password: formData.password,
+        }
+      );
+
+      localStorage.setItem('access', response.data.access);
+      localStorage.setItem('refresh', response.data.refresh);
+
+      navigate('/');
+    } catch (error) {
+      setErrors({
+        username: 'Invalid username or password',
+        password: 'Invalid username or password',
+      });
     }
   };
 
@@ -101,21 +115,22 @@ const Login = () => {
 
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground font-medium">
-                  {t('auth.login.emailLabel')}
+                <Label htmlFor="username" className="text-foreground font-medium">
+                  {t('auth.login.emailLabel') || 'Username'}
                 </Label>
                 <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder={t('auth.login.emailPlaceholder')}
-                  value={formData.email}
+                  id="username"
+                  name="username"
+                  type="text"
+                  placeholder={t('auth.login.emailPlaceholder') || 'Enter your username'}
+                  value={formData.username}
                   onChange={handleChange}
-                  className={`h-12 ${errors.email ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                  className={`h-12 ${errors.username ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                 />
-                {errors.email && (
-                  <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.email}</p>
+                {errors.username && (
+                  <p className="text-sm text-red-500 mt-1 animate-fade-in">{errors.username}</p>
                 )}
               </div>
 
